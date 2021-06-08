@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciador_aquifero/common/constants.dart';
 import 'package:gerenciador_aquifero/screens/login/login_screen.dart';
+import 'package:gerenciador_aquifero/stores/page_store.dart';
 import 'package:gerenciador_aquifero/stores/user_manager_store.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,6 +18,7 @@ final location = GetIt.instance;
 
 void setupLocation() {
   location.registerSingleton(UserManagerStore());
+  location.registerSingleton(PageStore());
 }
 
 class MyApp extends StatelessWidget {

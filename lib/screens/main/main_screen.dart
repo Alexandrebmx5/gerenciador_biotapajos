@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciador_aquifero/common/constants.dart';
 import 'package:gerenciador_aquifero/common/responsive.dart';
-import 'package:gerenciador_aquifero/controllers/MenuController.dart';
 import 'package:gerenciador_aquifero/screens/dashboard/dashboard_screen.dart';
-import 'package:provider/provider.dart';
 
-import 'components/side_menu.dart';
+import '../../common/drawer/side_menu.dart';
 
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: secondaryColor,
-      key: context.read<MenuController>().scaffoldKey,
       drawer: SideMenu(),
       body: SafeArea(
         child: Row(

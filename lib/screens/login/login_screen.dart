@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:gerenciador_aquifero/common/constants.dart';
-import 'package:gerenciador_aquifero/controllers/MenuController.dart';
-import 'package:gerenciador_aquifero/screens/main/main_screen.dart';
+import 'package:gerenciador_aquifero/screens/base/base_screen.dart';
 import 'package:gerenciador_aquifero/stores/login_store.dart';
 import 'package:gerenciador_aquifero/stores/user_manager_store.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
-import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -25,16 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     when((_) => userManagerStore.user != null, () {
       Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(
-          builder: (_) => MultiProvider(
-            providers: [
-              ChangeNotifierProvider(
-                create: (context) => MenuController(),
-              ),
-            ],
-            child: MainScreen(),
-          ),
-        ),
+        MaterialPageRoute(builder: (_) => BaseScreen()),
         (Route<dynamic> route) => false,
       );
     });
