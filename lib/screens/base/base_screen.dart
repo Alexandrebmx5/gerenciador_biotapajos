@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gerenciador_aquifero/screens/main/especie_screen.dart';
 import 'package:gerenciador_aquifero/screens/main/main_screen.dart';
 import 'package:gerenciador_aquifero/stores/page_store.dart';
 import 'package:get_it/get_it.dart';
@@ -29,7 +30,7 @@ class _BaseScreenState extends State<BaseScreen> {
         physics: NeverScrollableScrollPhysics(),
         children: [
           MainScreen(),
-          Container(),
+          EspecieScreen(),
           Container(),
           Container(),
           Container(),
