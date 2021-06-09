@@ -53,7 +53,7 @@ class SideMenu extends StatelessWidget {
             ),
             DrawerListTile(
               title: "Usuarios",
-              svgSrc: "assets/icons/menu_doc.svg",
+              svgSrc: "assets/icons/menu_profile.svg",
               press: () {
                 pageStore.setPage(3);
               },

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciador_aquifero/screens/main/especie_screen.dart';
 import 'package:gerenciador_aquifero/screens/main/main_screen.dart';
+import 'package:gerenciador_aquifero/screens/main/users_screen.dart';
 import 'package:gerenciador_aquifero/stores/page_store.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
@@ -32,7 +33,7 @@ class _BaseScreenState extends State<BaseScreen> {
           MainScreen(),
           EspecieScreen(),
           Container(),
-          Container(),
+          UsersScreen(),
           Container(),
           Container(),
         ],

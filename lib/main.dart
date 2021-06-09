@@ -1,5 +1,7 @@
+import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:gerenciador_aquifero/blocs/user_bloc.dart';
 import 'package:gerenciador_aquifero/common/constants.dart';
 import 'package:gerenciador_aquifero/controllers/MenuController.dart';
 import 'package:gerenciador_aquifero/screens/login/login_screen.dart';
@@ -27,22 +29,28 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (context) => MenuController(),
-        )
+    return BlocProvider(
+      blocs: [
+        Bloc((i) => UserBloc(), singleton: true)
       ],
-      child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Instituto Alter do Chão',
-          theme: ThemeData.dark().copyWith(
-            scaffoldBackgroundColor: bgColor,
-            textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
-                .apply(bodyColor: Colors.white),
-            canvasColor: secondaryColor,
-          ),
-          home: LoginScreen()),
+      dependencies: [],
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => MenuController(),
+          )
+        ],
+        child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Instituto Alter do Chão',
+            theme: ThemeData.dark().copyWith(
+              scaffoldBackgroundColor: bgColor,
+              textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
+                  .apply(bodyColor: Colors.white),
+              canvasColor: secondaryColor,
+            ),
+            home: LoginScreen()),
+      ),
     );
   }
 }
