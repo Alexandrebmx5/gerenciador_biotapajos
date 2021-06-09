@@ -1,9 +1,9 @@
-import 'dart:io';
+import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciador_aquifero/blocs/category_bloc.dart';
 import 'package:gerenciador_aquifero/common/constants.dart';
-import 'package:gerenciador_aquifero/screens/especie/components/image_source_sheet.dart';
 
 class EditCategoryDialog extends StatefulWidget {
   final DocumentSnapshot category;
@@ -40,32 +40,20 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
             children: <Widget>[
               ListTile(
                 leading: GestureDetector(
-                  onTap: () {
-                    showModalBottomSheet(
-                        context: context,
-                        builder: (context) => ImageSourceSheet(
-                              onImageSelected: (image) {
-                                Navigator.of(context).pop();
-                                _categoryBloc.setImage(image);
-                              },
-                            ));
+                  onTap: () async {
+                    FilePickerResult result = await FilePicker.platform.pickFiles();
+
+                    if (result != null) {
+                      Uint8List fileBytes = result.files.first.bytes;
+
+                      _categoryBloc.setImage(fileBytes);
+                    }
                   },
                   child: StreamBuilder(
                       stream: _categoryBloc.outImage,
                       builder: (context, snapshot) {
                         if (snapshot.data != null)
-                          return CircleAvatar(
-                            child: snapshot.data is File
-                                ? Image.file(
-                                    snapshot.data,
-                                    fit: BoxFit.cover,
-                                  )
-                                : Image.network(
-                                    snapshot.data,
-                                    fit: BoxFit.cover,
-                                  ),
-                            backgroundColor: Colors.transparent,
-                          );
+                          return Icon(Icons.assignment_turned_in_sharp);
                         else
                           return Icon(Icons.image);
                       }),

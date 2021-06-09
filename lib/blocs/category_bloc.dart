@@ -1,11 +1,16 @@
 import 'dart:async';
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:rxdart/rxdart.dart';
 
 class CategoryBloc extends BlocBase {
+
+  final FirebaseStorage storage = FirebaseStorage.instance;
+
+
   // ignore: non_constant_identifier_names, close_sinks
   final _pt_titleController = BehaviorSubject<String>();
   // ignore: non_constant_identifier_names, close_sinks
@@ -37,7 +42,7 @@ class CategoryBloc extends BlocBase {
 
   DocumentSnapshot category;
 
-  File image;
+  Uint8List image;
   // ignore: non_constant_identifier_names
   String pt_title;
   // ignore: non_constant_identifier_names
@@ -56,9 +61,9 @@ class CategoryBloc extends BlocBase {
     }
   }
 
-  void setImage(File file) {
-    image = file;
-    _imageController.add(file);
+  void setImage(Uint8List fileBytes) {
+    image = fileBytes;
+    _imageController.add(fileBytes);
   }
 
   void setTitle(String title) {
@@ -81,15 +86,16 @@ class CategoryBloc extends BlocBase {
 
     Map<String, dynamic> dataToUpdate = {};
 
-    if (image != null) {
-      UploadTask task = FirebaseStorage.instance
-          .ref()
-          .child("img")
-          .child(pt_title)
-          .putFile(image);
-      TaskSnapshot snap = await task;
-      dataToUpdate["img"] = await snap.ref.getDownloadURL();
-    }
+    final filePath = 'temp/${DateTime.now()}.png';//path to save Storage
+
+      if (image != null) {
+        final UploadTask task = storage.refFromURL('gs://appbiotapajos-3d160.appspot.com/list_thumb')
+            .child(filePath)
+            .putData(image);
+        final TaskSnapshot snapshot = await task;
+        final String url = await snapshot.ref.getDownloadURL();
+        dataToUpdate['img'] = url;
+      }
 
     if (category == null || pt_title != category.data()["pt"]) {
       dataToUpdate["pt"] = pt_title;

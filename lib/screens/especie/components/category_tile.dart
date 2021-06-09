@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciador_aquifero/common/constants.dart';
@@ -27,8 +28,11 @@ class CategoryTile extends StatelessWidget {
                       ));
             },
             child: CircleAvatar(
-              child: Image.network(
-                category.data()['img'],
+              child: CachedNetworkImage(
+                imageUrl: category.data()['img'],
+                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    CircularProgressIndicator(value: downloadProgress.progress),
+                errorWidget: (context, url, error) => Icon(Icons.error),
               ),
               backgroundColor: Colors.transparent,
             ),
@@ -47,7 +51,7 @@ class CategoryTile extends StatelessWidget {
                   children: snapshot.data.docs.map((doc) {
                     return ListTile(
                       leading: CircleAvatar(
-                        backgroundImage: NetworkImage(doc.data()['img'][0].toString()),
+                        backgroundImage: NetworkImage(doc.data()['img'][0]),
                         backgroundColor: Colors.transparent,
                       ),
                       title: Text(
