@@ -1,6 +1,7 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:gerenciador_aquifero/blocs/suggestions_bloc.dart';
 import 'package:gerenciador_aquifero/blocs/user_bloc.dart';
 import 'package:gerenciador_aquifero/common/constants.dart';
 import 'package:gerenciador_aquifero/controllers/MenuController.dart';
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       blocs: [
-        Bloc((i) => UserBloc(), singleton: true)
+        Bloc((i) => UserBloc(), singleton: true),
+        Bloc((i) => SuggestionsBloc(), singleton: true)
       ],
       dependencies: [],
       child: MultiProvider(
