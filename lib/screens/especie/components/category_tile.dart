@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciador_aquifero/common/constants.dart';
 import 'package:gerenciador_aquifero/screens/especie/components/edit_category_dialog.dart';
+import 'package:gerenciador_aquifero/screens/especie/components/subspecie_screen.dart';
 
 class CategoryTile extends StatelessWidget {
   final DocumentSnapshot category;
@@ -70,7 +71,13 @@ class CategoryTile extends StatelessWidget {
                         ),
                       ),
                       title: Text('Adicionar'),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => SubspecieScreen(
+                              specieId: category.id,
+                            ))
+                        );
+                      },
                     )),
                 );
               },
