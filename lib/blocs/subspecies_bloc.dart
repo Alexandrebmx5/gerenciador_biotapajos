@@ -33,8 +33,8 @@ class SubspeciesBloc extends BlocBase {
         'active_en': null,
         'color': null,
         'color_en': null,
-        'knowKnow': null,
-        'knowKnow_en': null,
+        'howKnow': null,
+        'howKnow_en': null,
         'img': [],
         'lat': null,
         'long': null,
@@ -78,11 +78,11 @@ class SubspeciesBloc extends BlocBase {
   }
 
   void saveKnowKnow(String knowKnow) {
-    unsavedData['knowKnow'] = knowKnow;
+    unsavedData['howKnow'] = knowKnow;
   }
 
   void saveKnowKnowEn(String knowKnowEn) {
-    unsavedData['knowKnow_en'] = knowKnowEn;
+    unsavedData['howKnow_en'] = knowKnowEn;
   }
 
   void saveImages(List images) {
@@ -126,7 +126,7 @@ class SubspeciesBloc extends BlocBase {
   }
 
   void saveScientificNameEn(String scientificNameEn) {
-    unsavedData['scientificName'] = scientificNameEn;
+    unsavedData['scientificName_en'] = scientificNameEn;
   }
 
   void saveSound(String sound) {
@@ -150,20 +150,19 @@ class SubspeciesBloc extends BlocBase {
   }
 
   void saveYouknow(String youknow) {
-    unsavedData['youknow'] = youknow;
+    unsavedData['youKnow'] = youknow;
   }
 
   void saveYouknowEn(String youknowEn) {
-    unsavedData['youknow_en'] = youknowEn;
+    unsavedData['youKnow_en'] = youknowEn;
   }
 
   // ignore: missing_return
   Future<bool> saveSubspecies() async {
     _loadingController.add(true);
-    try {
       if (subspecies != null) {
-        await _uploadImages(subspecies.id);
-        await _uploadSound(subspecies.id);
+        await _uploadImages();
+        await _uploadSound();
         await subspecies.reference.update(unsavedData);
       } else {
         DocumentReference dr = await FirebaseFirestore.instance
@@ -171,27 +170,26 @@ class SubspeciesBloc extends BlocBase {
             .doc(specieId)
             .collection('subspecies')
             .add(Map.from(unsavedData)
-          ..remove({'img', 'sound'}));
-        await _uploadImages(dr.id);
-        await _uploadSound(dr.id);
+          ..remove('img'));
+        await _uploadImages();
+        await _uploadSound();
         await dr.update(unsavedData);
-      }
 
-      _createdController.add(true);
-      _loadingController.add(false);
-    } catch (e) {
-      _loadingController.add(false);
-      return false;
-    }
+        _createdController.add(true);
+        _loadingController.add(false);
+        _loadingController.add(false);
+      }
   }
 
-  Future _uploadImages(String subspeciesId) async {
+  Future _uploadImages() async {
     for(int i = 0; i < unsavedData["img"].length; i++){
       if(unsavedData["img"][i] is String) continue;
 
-      UploadTask uploadTask = FirebaseStorage.instance.ref().child(specieId).
-      child(subspeciesId).child(DateTime.now().millisecondsSinceEpoch.toString()).
-      putFile(unsavedData["img"][i]);
+      final filePath = '${DateTime.now().millisecondsSinceEpoch.toString()}.png';
+
+      UploadTask uploadTask = FirebaseStorage.instance.ref().child(specieId)
+          .child(filePath)
+          .putData(unsavedData["img"][i]);
 
       TaskSnapshot s = await uploadTask;
       String downloadUrl = await s.ref.getDownloadURL();
@@ -200,19 +198,15 @@ class SubspeciesBloc extends BlocBase {
     }
   }
 
-  Future _uploadSound(String subspeciesId) async {
-    for(int i = 0; i < unsavedData["sound"].length; i++){
-      if(unsavedData["sound"][i] is String) continue;
-
-      UploadTask uploadTask = FirebaseStorage.instance.ref().child(specieId).
-      child(subspeciesId).child(DateTime.now().millisecondsSinceEpoch.toString()).
-      putFile(unsavedData["sound"][i]);
+  Future _uploadSound() async {
+      UploadTask uploadTask = FirebaseStorage.instance.ref().child(specieId)
+          .child(DateTime.now().millisecondsSinceEpoch.toString()).
+      putData(unsavedData["sound"]);
 
       TaskSnapshot s = await uploadTask;
       String downloadUrl = await s.ref.getDownloadURL();
 
-      unsavedData["sound"][i] = downloadUrl;
-    }
+      unsavedData["sound"] = downloadUrl;
   }
 
   void deleteProduct(){

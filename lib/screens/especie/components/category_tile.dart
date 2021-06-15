@@ -59,7 +59,14 @@ class CategoryTile extends StatelessWidget {
                         doc.data()['nome'],
                         style: TextStyle(color: bgColor),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => SubspecieScreen(
+                              specieId: category.id,
+                              subspecie: doc,
+                            ))
+                        );
+                      },
                     );
                   }).toList()
                     ..add(ListTile(
