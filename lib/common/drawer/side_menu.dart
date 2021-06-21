@@ -65,13 +65,6 @@ class SideMenu extends StatelessWidget {
                 pageStore.setPage(4);
               },
             ),
-            DrawerListTile(
-              title: "Configurações",
-              svgSrc: "assets/icons/menu_setting.svg",
-              press: () {
-                pageStore.setPage(5);
-              },
-            ),
             SizedBox(
               height: 10,
             ),

@@ -37,7 +37,6 @@ class _BaseScreenState extends State<BaseScreen> {
           SuggestionsScreen(),
           UsersScreen(),
           PdfScreen(),
-          Container(),
         ],
       ),
     );
