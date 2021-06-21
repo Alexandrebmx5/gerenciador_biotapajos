@@ -9,6 +9,7 @@ class PdfBloc extends BlocBase {
 
   final FirebaseStorage storage = FirebaseStorage.instance;
 
+  // ignore: non_constant_identifier_names
   final _pt_titleController = BehaviorSubject<String>();
   final _pdfController = BehaviorSubject();
   final _deleteController = BehaviorSubject<bool>();
@@ -95,6 +96,7 @@ class PdfBloc extends BlocBase {
   }
 
   @override
+  // ignore: must_call_super
   void dispose() {
     _pdfController.close();
     _deleteController.close();

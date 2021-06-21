@@ -45,6 +45,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
     );
 
     return Scaffold(
+      key: _scaffoldkey,
       backgroundColor: secondaryColor,
       appBar: AppBar(
         backgroundColor: primaryColor,
@@ -84,7 +85,10 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
               builder: (context, snapshot) {
                 return IconButton(
                     icon: Icon(Icons.save),
-                    onPressed: _subspeciesBloc.saveSubspecies
+                    onPressed: snapshot.data ? null : (){
+                      _subspeciesBloc.saveSubspecies();
+                      Navigator.of(context).pop();
+                    }
                 );
               }
           )
@@ -145,7 +149,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['nome'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Nome'),
-                                  onSaved: _subspeciesBloc.saveNome,
+                                  onChanged: _subspeciesBloc.saveNome,
                                   //validator: validateTitle,
                                 ),
                               ),
@@ -162,7 +166,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['nome_en'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Nome em inglês'),
-                                  onSaved: _subspeciesBloc.saveNomeEn,
+                                  onChanged: _subspeciesBloc.saveNomeEn,
                                   //validator: validateTitle,
                                 ),
                               ),
@@ -184,7 +188,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['reproduction'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Reprodução'),
-                                  onSaved: _subspeciesBloc.saveReproductions,
+                                  onChanged: _subspeciesBloc.saveReproductions,
                                   //validator: validateTitle,
                                 ),
                               ),
@@ -202,7 +206,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['reproduction_en'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Reprodução em inglês'),
-                                  onSaved: _subspeciesBloc.saveReproductionsEn,
+                                  onChanged: _subspeciesBloc.saveReproductionsEn,
                                   //validator: validateTitle,
                                 ),
                               ),
@@ -220,7 +224,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['youKnow'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Você sabe?'),
-                                  onSaved: _subspeciesBloc.saveYouknow,
+                                  onChanged: _subspeciesBloc.saveYouknow,
                                   //validator: validateTitle,
                                 ),
                               ),
@@ -238,7 +242,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['youKnow_en'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Você sabe em inglês'),
-                                  onSaved: _subspeciesBloc.saveYouknowEn,
+                                  onChanged: _subspeciesBloc.saveYouknowEn,
                                   //validator: validateTitle,
                                 ),
                               )
@@ -259,7 +263,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['specie'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Espécie'),
-                                  onSaved: _subspeciesBloc.saveSpecie,
+                                  onChanged: _subspeciesBloc.saveSpecie,
                                   //validator: validateTitle,
                                 ),
                               ),
@@ -276,7 +280,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['specie_en'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Espécie em inglês'),
-                                  onSaved: _subspeciesBloc.saveSpecie,
+                                  onChanged: _subspeciesBloc.saveSpecieEn,
                                   //validator: validateTitle,
                                 ),
                               ),
@@ -293,7 +297,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['subspecie'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Sub Espécie'),
-                                  onSaved: _subspeciesBloc.saveSubspecie,
+                                  onChanged: _subspeciesBloc.saveSubspecie,
                                   //validator: validateTitle,
                                 ),
                               ),
@@ -310,7 +314,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['subspecie_en'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Sub Espécie em inglês'),
-                                  onSaved: _subspeciesBloc.saveSubspecieEn,
+                                  onChanged: _subspeciesBloc.saveSubspecieEn,
                                   //validator: validateTitle,
                                 ),
                               )
@@ -331,7 +335,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['scientificName'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Nome científico'),
-                                  onSaved: _subspeciesBloc.saveScientificName,
+                                  onChanged: _subspeciesBloc.saveScientificName,
                                   //validator: validateTitle,
                                 ),
                               ),
@@ -348,7 +352,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['scientificName_en'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Nome científico em inglês'),
-                                  onSaved: _subspeciesBloc.saveScientificNameEn,
+                                  onChanged: _subspeciesBloc.saveScientificNameEn,
                                   //validator: validateTitle,
                                 ),
                               ),
@@ -365,7 +369,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['locations'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Localização'),
-                                  onSaved: _subspeciesBloc.saveLocations,
+                                  onChanged: _subspeciesBloc.saveLocations,
                                   //validator: validateTitle,
                                 ),
                               ),
@@ -382,7 +386,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['locations_en'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Localização em inglês'),
-                                  onSaved: _subspeciesBloc.saveLocationsEn,
+                                  onChanged: _subspeciesBloc.saveLocationsEn,
                                   //validator: validateTitle,
                                 ),
                               )
@@ -403,7 +407,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['howKnow'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Tamanho'),
-                                  onSaved: _subspeciesBloc.saveKnowKnow,
+                                  onChanged: _subspeciesBloc.saveKnowKnow,
                                   //validator: validateTitle,
                                 ),
                               ),
@@ -420,7 +424,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['howKnow_en'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Tamanho em inglês'),
-                                  onSaved: _subspeciesBloc.saveKnowKnowEn,
+                                  onChanged: _subspeciesBloc.saveKnowKnowEn,
                                   //validator: validateTitle,
                                 ),
                               ),
@@ -437,7 +441,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['color'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Cor predominante'),
-                                  onSaved: _subspeciesBloc.saveColor,
+                                  onChanged: _subspeciesBloc.saveColor,
                                   //validator: validateTitle,
                                 ),
                               ),
@@ -454,7 +458,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['color_en'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Cor predominante em inglês'),
-                                  onSaved: _subspeciesBloc.saveColorEn,
+                                  onChanged: _subspeciesBloc.saveColorEn,
                                   //validator: validateTitle,
                                 ),
                               )
@@ -475,7 +479,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['active'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Ativa'),
-                                  onSaved: _subspeciesBloc.saveActive,
+                                  onChanged: _subspeciesBloc.saveActive,
                                   //validator: validateTitle,
                                 ),
                               ),
@@ -492,7 +496,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['active_en'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Ativa em inglês'),
-                                  onSaved: _subspeciesBloc.saveActiveEn,
+                                  onChanged: _subspeciesBloc.saveActiveEn,
                                   //validator: validateTitle,
                                 ),
                               ),
@@ -509,7 +513,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['lat'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Latidade'),
-                                  onSaved: _subspeciesBloc.saveLat,
+                                  onChanged: _subspeciesBloc.saveLat,
                                   //validator: validateTitle,
                                 ),
                               ),
@@ -526,7 +530,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                                   initialValue: snapshot.data['long'],
                                   style: _fieldStyle,
                                   decoration: _buildDecoration('Longitude'),
-                                  onSaved: _subspeciesBloc.saveLong,
+                                  onChanged: _subspeciesBloc.saveLong,
                                   //validator: validateTitle,
                                 ),
                               )
@@ -557,11 +561,29 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
     );
   }
 
-  void saveSubspecie() async {
+  void saveProduct() async {
     if(_formKey.currentState.validate()){
       _formKey.currentState.save();
 
+      // ignore: deprecated_member_use
+      _scaffoldkey.currentState.showSnackBar(
+          SnackBar(content: Text("Salvando espécie...", style: TextStyle(color: Colors.black),),
+            duration: Duration(seconds: 10),
+            backgroundColor: primaryColor,
+          )
+      );
 
+      bool success = await _subspeciesBloc.saveSubspecies();
+
+      // ignore: deprecated_member_use
+      _scaffoldkey.currentState.removeCurrentSnackBar();
+
+      // ignore: deprecated_member_use
+      _scaffoldkey.currentState.showSnackBar(
+          SnackBar(content: Text(success ? "Espécie salva!" : "Erro ao salvar espécie!", style: TextStyle(color: Colors.black),),
+            backgroundColor: primaryColor,
+          )
+      );
     }
   }
 }

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'dart:typed_data';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -113,6 +112,7 @@ class CategoryBloc extends BlocBase {
   }
 
   @override
+  // ignore: must_call_super
   void dispose() {
     _pt_titleController.close();
     _en_titleController.close();

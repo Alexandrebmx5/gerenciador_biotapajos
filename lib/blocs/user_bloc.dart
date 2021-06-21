@@ -70,6 +70,7 @@ class UserBloc extends BlocBase {
   }
 
   @override
+  // ignore: must_call_super
   void dispose() {
     _usersController.close();
   }

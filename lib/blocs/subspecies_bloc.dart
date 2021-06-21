@@ -114,11 +114,11 @@ class SubspeciesBloc extends BlocBase {
   }
 
   void saveReproductions(String reproductions) {
-    unsavedData['reproductions'] = reproductions;
+    unsavedData['reproduction'] = reproductions;
   }
 
   void saveReproductionsEn(String reproductionsEn) {
-    unsavedData['reproductions_en'] = reproductionsEn;
+    unsavedData['reproduction_en'] = reproductionsEn;
   }
 
   void saveScientificName(String scientificName) {
@@ -162,7 +162,6 @@ class SubspeciesBloc extends BlocBase {
     _loadingController.add(true);
       if (subspecies != null) {
         await _uploadImages();
-        await _uploadSound();
         await subspecies.reference.update(unsavedData);
       } else {
         DocumentReference dr = await FirebaseFirestore.instance
@@ -199,6 +198,7 @@ class SubspeciesBloc extends BlocBase {
   }
 
   Future _uploadSound() async {
+
       UploadTask uploadTask = FirebaseStorage.instance.ref().child(specieId)
           .child(DateTime.now().millisecondsSinceEpoch.toString()).
       putData(unsavedData["sound"]);
@@ -207,6 +207,7 @@ class SubspeciesBloc extends BlocBase {
       String downloadUrl = await s.ref.getDownloadURL();
 
       unsavedData["sound"] = downloadUrl;
+
   }
 
   void deleteProduct(){
@@ -214,6 +215,7 @@ class SubspeciesBloc extends BlocBase {
   }
 
   @override
+  // ignore: must_call_super
   void dispose() {
     _dataController.close();
     _loadingController.close();

@@ -70,6 +70,7 @@ class SuggestionsBloc extends BlocBase {
   }
 
   @override
+  // ignore: must_call_super
   void dispose() {
     _suggestionsController.close();
   }

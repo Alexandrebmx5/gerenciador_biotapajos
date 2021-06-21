@@ -25,19 +25,12 @@ class SoundWidget extends FormField<String> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                height: 124,
                 padding: EdgeInsets.only(top: 16, bottom: 8),
-                child: GestureDetector(
+                child: ElevatedButton(
                           child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.grey.withAlpha(50),
-                                borderRadius: BorderRadius.circular(20)
-                            ),
-                            height: 100,
-                            width: 100,
-                            child: Icon(Icons.camera_enhance, color: Colors.grey,),
+                            child: state.value == null ? Text('Selecione um som', style: TextStyle(color: Colors.black),) : Text('Selecionado', style: TextStyle(color: Colors.black))
                           ),
-                          onTap: () async {
+                          onPressed: () async {
                             FilePickerResult result = await FilePicker.platform.pickFiles();
 
                             if (result != null) {

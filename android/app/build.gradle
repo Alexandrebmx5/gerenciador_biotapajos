@@ -37,8 +37,8 @@ android {
         applicationId "com.example.gerenciador_aquifero"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
+        versionCode 1
+        versionName '1.1.0+1'
     }
 
     buildTypes {
