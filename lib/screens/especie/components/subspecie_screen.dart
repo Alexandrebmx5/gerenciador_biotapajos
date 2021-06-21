@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciador_aquifero/blocs/subspecies_bloc.dart';
 import 'package:gerenciador_aquifero/common/constants.dart';
+import 'package:gerenciador_aquifero/common/responsive.dart';
 import 'package:gerenciador_aquifero/screens/especie/components/images_widget.dart';
 import 'package:gerenciador_aquifero/screens/especie/components/sound_widget.dart';
 
@@ -43,6 +44,7 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
         color: Colors.black,
         fontSize: 16
     );
+
 
     return Scaffold(
       key: _scaffoldkey,
@@ -105,439 +107,837 @@ class _SubspecieScreenState extends State<SubspecieScreen> {
                     stream: _subspeciesBloc.outData,
                     builder: (context, snapshot){
                       if(!snapshot.hasData) return Container();
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: defaultPadding),
-                            child: Row(
+                      if(Responsive.isDesktop(context))
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: defaultPadding),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'Escolher imagens:',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 12
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            ImagesWidget(
+                              context: context,
+                              initialValue: snapshot.data['img'],
+                              onSaved: _subspeciesBloc.saveImages,
+                              //validator: validateImages,
+                            ),
+                            SoundWidget(
+                              context: context,
+                              initialValue: snapshot.data['sound'],
+                              onSaved: _subspeciesBloc.saveSound,
+                              //validator: validateImages,
+                            ),
+                            Row(
                               children: [
-                                Text(
-                                  'Escolher imagens:',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 12
+                                Container(
+                                  margin: EdgeInsets.only(left: 16),
+                                  width: MediaQuery.of(context).size.width * 0.41,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Colors.grey[300]),
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    initialValue: snapshot.data['nome'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Nome'),
+                                    onChanged: _subspeciesBloc.saveNome,
+                                    //validator: validateTitle,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 16),
+                                  width: MediaQuery.of(context).size.width * 0.41,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    initialValue: snapshot.data['nome_en'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Nome em inglês'),
+                                    onChanged: _subspeciesBloc.saveNomeEn,
+                                    //validator: validateTitle,
                                   ),
                                 ),
                               ],
                             ),
-                          ),
-                          ImagesWidget(
-                            context: context,
-                            initialValue: snapshot.data['img'],
-                            onSaved: _subspeciesBloc.saveImages,
-                            //validator: validateImages,
-                          ),
-                          SoundWidget(
-                            context: context,
-                            initialValue: snapshot.data['sound'],
-                            onSaved: _subspeciesBloc.saveSound,
-                            //validator: validateImages,
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(left: 16),
-                                width: MediaQuery.of(context).size.width * 0.41,
-                                height: 50,
-                                decoration: BoxDecoration(
+                            Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    expands: false,
+                                    maxLines: 6,
+                                    initialValue: snapshot.data['reproduction'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Reprodução'),
+                                    onChanged: _subspeciesBloc.saveReproductions,
+                                    //validator: validateTitle,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    expands: false,
+                                    maxLines: 6,
+                                    initialValue: snapshot.data['reproduction_en'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Reprodução em inglês'),
+                                    onChanged: _subspeciesBloc.saveReproductionsEn,
+                                    //validator: validateTitle,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    expands: false,
+                                    maxLines: 6,
+                                    initialValue: snapshot.data['youKnow'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Você sabe?'),
+                                    onChanged: _subspeciesBloc.saveYouknow,
+                                    //validator: validateTitle,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    expands: false,
+                                    maxLines: 6,
+                                    initialValue: snapshot.data['youKnow_en'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Você sabe em inglês'),
+                                    onChanged: _subspeciesBloc.saveYouknowEn,
+                                    //validator: validateTitle,
+                                  ),
+                                )
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    initialValue: snapshot.data['specie'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Espécie'),
+                                    onChanged: _subspeciesBloc.saveSpecie,
+                                    //validator: validateTitle,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    initialValue: snapshot.data['specie_en'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Espécie em inglês'),
+                                    onChanged: _subspeciesBloc.saveSpecieEn,
+                                    //validator: validateTitle,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    initialValue: snapshot.data['subspecie'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Sub Espécie'),
+                                    onChanged: _subspeciesBloc.saveSubspecie,
+                                    //validator: validateTitle,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    initialValue: snapshot.data['subspecie_en'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Sub Espécie em inglês'),
+                                    onChanged: _subspeciesBloc.saveSubspecieEn,
+                                    //validator: validateTitle,
+                                  ),
+                                )
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    initialValue: snapshot.data['scientificName'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Nome científico'),
+                                    onChanged: _subspeciesBloc.saveScientificName,
+                                    //validator: validateTitle,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    initialValue: snapshot.data['scientificName_en'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Nome científico em inglês'),
+                                    onChanged: _subspeciesBloc.saveScientificNameEn,
+                                    //validator: validateTitle,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    initialValue: snapshot.data['locations'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Localização'),
+                                    onChanged: _subspeciesBloc.saveLocations,
+                                    //validator: validateTitle,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    initialValue: snapshot.data['locations_en'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Localização em inglês'),
+                                    onChanged: _subspeciesBloc.saveLocationsEn,
+                                    //validator: validateTitle,
+                                  ),
+                                )
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    initialValue: snapshot.data['howKnow'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Tamanho'),
+                                    onChanged: _subspeciesBloc.saveKnowKnow,
+                                    //validator: validateTitle,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    initialValue: snapshot.data['howKnow_en'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Tamanho em inglês'),
+                                    onChanged: _subspeciesBloc.saveKnowKnowEn,
+                                    //validator: validateTitle,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    initialValue: snapshot.data['color'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Cor predominante'),
+                                    onChanged: _subspeciesBloc.saveColor,
+                                    //validator: validateTitle,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    initialValue: snapshot.data['color_en'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Cor predominante em inglês'),
+                                    onChanged: _subspeciesBloc.saveColorEn,
+                                    //validator: validateTitle,
+                                  ),
+                                )
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    initialValue: snapshot.data['active'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Ativa'),
+                                    onChanged: _subspeciesBloc.saveActive,
+                                    //validator: validateTitle,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    initialValue: snapshot.data['active_en'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Ativa em inglês'),
+                                    onChanged: _subspeciesBloc.saveActiveEn,
+                                    //validator: validateTitle,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    initialValue: snapshot.data['lat'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Latidade'),
+                                    onChanged: _subspeciesBloc.saveLat,
+                                    //validator: validateTitle,
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                                  width: MediaQuery.of(context).size.width * 0.2,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.grey[300]),
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.grey[100]
+                                  ),
+                                  child: TextFormField(
+                                    initialValue: snapshot.data['long'],
+                                    style: _fieldStyle,
+                                    decoration: _buildDecoration('Longitude'),
+                                    onChanged: _subspeciesBloc.saveLong,
+                                    //validator: validateTitle,
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        );
+                      else
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: defaultPadding),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'Escolher imagens:',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 12
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            ImagesWidget(
+                              context: context,
+                              initialValue: snapshot.data['img'],
+                              onSaved: _subspeciesBloc.saveImages,
+                              //validator: validateImages,
+                            ),
+                            SoundWidget(
+                              context: context,
+                              initialValue: snapshot.data['sound'],
+                              onSaved: _subspeciesBloc.saveSound,
+                              //validator: validateImages,
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, right: 16),
+                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              decoration: BoxDecoration(
                                   border: Border.all(color: Colors.grey[300]),
                                   borderRadius: BorderRadius.circular(10),
                                   color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  initialValue: snapshot.data['nome'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Nome'),
-                                  onChanged: _subspeciesBloc.saveNome,
-                                  //validator: validateTitle,
-                                ),
                               ),
-                              Container(
-                                margin: EdgeInsets.only(left: 16),
-                                width: MediaQuery.of(context).size.width * 0.41,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  initialValue: snapshot.data['nome_en'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Nome em inglês'),
-                                  onChanged: _subspeciesBloc.saveNomeEn,
-                                  //validator: validateTitle,
-                                ),
+                              child: TextFormField(
+                                initialValue: snapshot.data['nome'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Nome'),
+                                onChanged: _subspeciesBloc.saveNome,
+                                //validator: validateTitle,
                               ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  expands: false,
-                                  maxLines: 6,
-                                  initialValue: snapshot.data['reproduction'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Reprodução'),
-                                  onChanged: _subspeciesBloc.saveReproductions,
-                                  //validator: validateTitle,
-                                ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),
+                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
                               ),
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  expands: false,
-                                  maxLines: 6,
-                                  initialValue: snapshot.data['reproduction_en'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Reprodução em inglês'),
-                                  onChanged: _subspeciesBloc.saveReproductionsEn,
-                                  //validator: validateTitle,
-                                ),
+                              child: TextFormField(
+                                initialValue: snapshot.data['nome_en'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Nome em inglês'),
+                                onChanged: _subspeciesBloc.saveNomeEn,
+                                //validator: validateTitle,
                               ),
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  expands: false,
-                                  maxLines: 6,
-                                  initialValue: snapshot.data['youKnow'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Você sabe?'),
-                                  onChanged: _subspeciesBloc.saveYouknow,
-                                  //validator: validateTitle,
-                                ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
                               ),
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  expands: false,
-                                  maxLines: 6,
-                                  initialValue: snapshot.data['youKnow_en'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Você sabe em inglês'),
-                                  onChanged: _subspeciesBloc.saveYouknowEn,
-                                  //validator: validateTitle,
-                                ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  initialValue: snapshot.data['specie'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Espécie'),
-                                  onChanged: _subspeciesBloc.saveSpecie,
-                                  //validator: validateTitle,
-                                ),
+                              child: TextFormField(
+                                expands: false,
+                                maxLines: 6,
+                                initialValue: snapshot.data['reproduction'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Reprodução'),
+                                onChanged: _subspeciesBloc.saveReproductions,
+                                //validator: validateTitle,
                               ),
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  initialValue: snapshot.data['specie_en'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Espécie em inglês'),
-                                  onChanged: _subspeciesBloc.saveSpecieEn,
-                                  //validator: validateTitle,
-                                ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
                               ),
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  initialValue: snapshot.data['subspecie'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Sub Espécie'),
-                                  onChanged: _subspeciesBloc.saveSubspecie,
-                                  //validator: validateTitle,
-                                ),
+                              child: TextFormField(
+                                expands: false,
+                                maxLines: 6,
+                                initialValue: snapshot.data['reproduction_en'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Reprodução em inglês'),
+                                onChanged: _subspeciesBloc.saveReproductionsEn,
+                                //validator: validateTitle,
                               ),
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  initialValue: snapshot.data['subspecie_en'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Sub Espécie em inglês'),
-                                  onChanged: _subspeciesBloc.saveSubspecieEn,
-                                  //validator: validateTitle,
-                                ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  initialValue: snapshot.data['scientificName'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Nome científico'),
-                                  onChanged: _subspeciesBloc.saveScientificName,
-                                  //validator: validateTitle,
-                                ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),
+                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
                               ),
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  initialValue: snapshot.data['scientificName_en'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Nome científico em inglês'),
-                                  onChanged: _subspeciesBloc.saveScientificNameEn,
-                                  //validator: validateTitle,
-                                ),
+                              child: TextFormField(
+                                expands: false,
+                                maxLines: 6,
+                                initialValue: snapshot.data['youKnow'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Você sabe?'),
+                                onChanged: _subspeciesBloc.saveYouknow,
+                                //validator: validateTitle,
                               ),
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  initialValue: snapshot.data['locations'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Localização'),
-                                  onChanged: _subspeciesBloc.saveLocations,
-                                  //validator: validateTitle,
-                                ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),                              width: MediaQuery.of(context).size.width,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
                               ),
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  initialValue: snapshot.data['locations_en'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Localização em inglês'),
-                                  onChanged: _subspeciesBloc.saveLocationsEn,
-                                  //validator: validateTitle,
-                                ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  initialValue: snapshot.data['howKnow'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Tamanho'),
-                                  onChanged: _subspeciesBloc.saveKnowKnow,
-                                  //validator: validateTitle,
-                                ),
+                              child: TextFormField(
+                                expands: false,
+                                maxLines: 6,
+                                initialValue: snapshot.data['youKnow_en'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Você sabe em inglês'),
+                                onChanged: _subspeciesBloc.saveYouknowEn,
+                                //validator: validateTitle,
                               ),
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  initialValue: snapshot.data['howKnow_en'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Tamanho em inglês'),
-                                  onChanged: _subspeciesBloc.saveKnowKnowEn,
-                                  //validator: validateTitle,
-                                ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),
+                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
                               ),
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  initialValue: snapshot.data['color'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Cor predominante'),
-                                  onChanged: _subspeciesBloc.saveColor,
-                                  //validator: validateTitle,
-                                ),
+                              child: TextFormField(
+                                initialValue: snapshot.data['specie'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Espécie'),
+                                onChanged: _subspeciesBloc.saveSpecie,
+                                //validator: validateTitle,
                               ),
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  initialValue: snapshot.data['color_en'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Cor predominante em inglês'),
-                                  onChanged: _subspeciesBloc.saveColorEn,
-                                  //validator: validateTitle,
-                                ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16, bottom: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  initialValue: snapshot.data['active'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Ativa'),
-                                  onChanged: _subspeciesBloc.saveActive,
-                                  //validator: validateTitle,
-                                ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
                               ),
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16, bottom: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  initialValue: snapshot.data['active_en'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Ativa em inglês'),
-                                  onChanged: _subspeciesBloc.saveActiveEn,
-                                  //validator: validateTitle,
-                                ),
+                              child: TextFormField(
+                                initialValue: snapshot.data['specie_en'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Espécie em inglês'),
+                                onChanged: _subspeciesBloc.saveSpecieEn,
+                                //validator: validateTitle,
                               ),
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16, bottom: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  initialValue: snapshot.data['lat'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Latidade'),
-                                  onChanged: _subspeciesBloc.saveLat,
-                                  //validator: validateTitle,
-                                ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
                               ),
-                              Container(
-                                margin: EdgeInsets.only(left: 16, top: 16, bottom: 16),
-                                width: MediaQuery.of(context).size.width * 0.2,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey[300]),
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.grey[100]
-                                ),
-                                child: TextFormField(
-                                  initialValue: snapshot.data['long'],
-                                  style: _fieldStyle,
-                                  decoration: _buildDecoration('Longitude'),
-                                  onChanged: _subspeciesBloc.saveLong,
-                                  //validator: validateTitle,
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      );
+                              child: TextFormField(
+                                initialValue: snapshot.data['subspecie'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Sub Espécie'),
+                                onChanged: _subspeciesBloc.saveSubspecie,
+                                //validator: validateTitle,
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
+                              ),
+                              child: TextFormField(
+                                initialValue: snapshot.data['subspecie_en'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Sub Espécie em inglês'),
+                                onChanged: _subspeciesBloc.saveSubspecieEn,
+                                //validator: validateTitle,
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),
+                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
+                              ),
+                              child: TextFormField(
+                                initialValue: snapshot.data['scientificName'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Nome científico'),
+                                onChanged: _subspeciesBloc.saveScientificName,
+                                //validator: validateTitle,
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
+                              ),
+                              child: TextFormField(
+                                initialValue: snapshot.data['scientificName_en'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Nome científico em inglês'),
+                                onChanged: _subspeciesBloc.saveScientificNameEn,
+                                //validator: validateTitle,
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
+                              ),
+                              child: TextFormField(
+                                initialValue: snapshot.data['locations'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Localização'),
+                                onChanged: _subspeciesBloc.saveLocations,
+                                //validator: validateTitle,
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
+                              ),
+                              child: TextFormField(
+                                initialValue: snapshot.data['locations_en'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Localização em inglês'),
+                                onChanged: _subspeciesBloc.saveLocationsEn,
+                                //validator: validateTitle,
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
+                              ),
+                              child: TextFormField(
+                                initialValue: snapshot.data['howKnow'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Tamanho'),
+                                onChanged: _subspeciesBloc.saveKnowKnow,
+                                //validator: validateTitle,
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
+                              ),
+                              child: TextFormField(
+                                initialValue: snapshot.data['howKnow_en'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Tamanho em inglês'),
+                                onChanged: _subspeciesBloc.saveKnowKnowEn,
+                                //validator: validateTitle,
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
+                              ),
+                              child: TextFormField(
+                                initialValue: snapshot.data['color'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Cor predominante'),
+                                onChanged: _subspeciesBloc.saveColor,
+                                //validator: validateTitle,
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
+                              ),
+                              child: TextFormField(
+                                initialValue: snapshot.data['color_en'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Cor predominante em inglês'),
+                                onChanged: _subspeciesBloc.saveColorEn,
+                                //validator: validateTitle,
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
+                              ),
+                              child: TextFormField(
+                                initialValue: snapshot.data['active'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Ativa'),
+                                onChanged: _subspeciesBloc.saveActive,
+                                //validator: validateTitle,
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
+                              ),
+                              child: TextFormField(
+                                initialValue: snapshot.data['active_en'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Ativa em inglês'),
+                                onChanged: _subspeciesBloc.saveActiveEn,
+                                //validator: validateTitle,
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, right: 16),
+                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
+                              ),
+                              child: TextFormField(
+                                initialValue: snapshot.data['lat'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Latidade'),
+                                onChanged: _subspeciesBloc.saveLat,
+                                //validator: validateTitle,
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 16, top: 16, bottom: 16, right: 16),
+                              width: MediaQuery.of(context).size.width,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]
+                              ),
+                              child: TextFormField(
+                                initialValue: snapshot.data['long'],
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Longitude'),
+                                onChanged: _subspeciesBloc.saveLong,
+                                //validator: validateTitle,
+                              ),
+                            )
+                          ],
+                        );
                     },
                   ),
                 ),
