@@ -27,8 +27,15 @@ class SideMenu extends StatelessWidget {
         // it enables scrolling
         child: Column(
           children: [
-            DrawerHeader(
-              child: Image.asset("assets/images/logo.png"),
+            SizedBox(
+              height: 130,
+              child: DrawerHeader(
+                child: Image.asset("assets/images/logo.png"),
+                margin: EdgeInsets.only(left: 10, right: 10, bottom: 20),
+                decoration: BoxDecoration(
+                  border: Border(bottom: BorderSide(color: Colors.grey))
+                ),
+              ),
             ),
             DrawerListTile(
               title: "Home",

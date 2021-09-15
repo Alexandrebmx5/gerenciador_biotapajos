@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
         ],
         child: MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'Instituto Alter do Chão',
+            title: 'BioCheck Tapajós',
             theme: ThemeData.dark().copyWith(
               scaffoldBackgroundColor: bgColor,
               textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)

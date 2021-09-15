@@ -34,7 +34,7 @@ class _VerDadosSuggestionsState extends State<VerDadosSuggestions> {
                     Text('Arquivo:'),
                     TextButton(
                         child: Text('Baixar'),
-                        style: TextButton.styleFrom(primary: bgColor),
+                        style: TextButton.styleFrom(primary: primaryColor),
                         onPressed: (){
                           launchURL(url: suggestions['fileUrl']);
                         }
@@ -81,7 +81,7 @@ class _VerDadosSuggestionsState extends State<VerDadosSuggestions> {
                   SizedBox(height: 5,),
                   TextButton(
                       child: Text('Sair'),
-                      style: TextButton.styleFrom(primary: bgColor),
+                      style: TextButton.styleFrom(primary: Colors.red),
                       onPressed: Navigator.of(context).pop
                   )
                 ],

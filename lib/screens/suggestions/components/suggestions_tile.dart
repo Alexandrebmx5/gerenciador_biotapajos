@@ -24,7 +24,7 @@ class SuggestionsTile extends StatelessWidget {
                 else if(snapshot.data.length == 0)
                   return Center(
                     child: Text('Nenhuma sugestão encontrada!',
-                      style: TextStyle(color: primaryColor),
+                      style: TextStyle(color: bgColor),
                     ),
                   );
                 else

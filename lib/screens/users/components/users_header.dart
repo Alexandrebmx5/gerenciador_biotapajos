@@ -31,10 +31,12 @@ class UsersHeader extends StatelessWidget {
             ),
           if (!Responsive.isMobile(context))
             Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
-          Expanded(child: Padding(
+          Padding(
             padding: const EdgeInsets.all(defaultPadding),
-            child: SearchField(),
-          ))
+            child: Container(
+              width: 350,
+                child: SearchField()),
+          )
         ],
       ),
     );
@@ -48,8 +50,10 @@ class SearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       onChanged: _userBloc.onChangedSearch,
+      style: TextStyle(color: bgColor),
       decoration: InputDecoration(
         hintText: "Pesquisar",
+        hintStyle: TextStyle(color: bgColor),
         labelStyle: TextStyle(color: Colors.black),
         filled: true,
         border: OutlineInputBorder(

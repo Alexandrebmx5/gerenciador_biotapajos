@@ -25,16 +25,18 @@ class SuggestionsHeader extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(left: defaultPadding),
               child: Text(
-                "Sugestões do usuários",
+                "Sugestões dos usuários",
                 style: Theme.of(context).textTheme.headline6,
               ),
             ),
           if (!Responsive.isMobile(context))
             Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
-          Expanded(child: Padding(
+          Padding(
             padding: const EdgeInsets.all(defaultPadding),
-            child: SearchField(),
-          ))
+            child: Container(
+                width: 350,
+                child: SearchField()),
+          )
         ],
       ),
     );
@@ -48,9 +50,10 @@ class SearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       onChanged: _suggestionsBloc.onChangedSearch,
+      style: TextStyle(color: bgColor),
       decoration: InputDecoration(
         hintText: "Pesquisar",
-        labelStyle: TextStyle(color: Colors.black),
+        hintStyle: TextStyle(color: bgColor),
         filled: true,
         border: OutlineInputBorder(
           borderSide: BorderSide.none,

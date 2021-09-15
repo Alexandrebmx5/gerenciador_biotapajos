@@ -38,7 +38,7 @@ class PdfHeader extends StatelessWidget {
                   width: 70,
                   child: ElevatedButton(
                     child: Text('Adicionar'),
-                    style: ElevatedButton.styleFrom(primary: bgColor),
+                    style: ElevatedButton.styleFrom(primary: bgBlue),
                     onPressed: () {
                       showDialog(
                           context: context,

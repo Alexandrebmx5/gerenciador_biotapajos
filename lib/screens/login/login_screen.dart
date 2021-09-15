@@ -32,7 +32,12 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: primaryColor,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/fundo.png'),
+          fit: BoxFit.cover
+        )
+      ),
       child: SafeArea(
         child: Center(child: Observer(builder: (_) {
           if (loginStore.loading)
@@ -57,11 +62,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       Padding(
                         padding: const EdgeInsets.only(top: 20, bottom: 10),
                         child: Container(
-                          height: 70,
+                          height: 100,
+                          width: 200,
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
-                                      'assets/images/Grupo 15868.png'))),
+                                      'assets/images/logo.png'))),
                         ),
                       ),
                       Observer(builder: (_) {
@@ -151,26 +157,30 @@ class _LoginScreenState extends State<LoginScreen> {
                       }),
                       Wrap(
                         children: [
-                          ButtonBar(
-                            children: [
-                              Observer(builder: (_) {
-                                return SizedBox(
-                                  height: 44,
-                                  width: 100,
-                                  // ignore: deprecated_member_use
-                                  child: RaisedButton(
-                                    disabledColor: primaryColor.withAlpha(150),
-                                    elevation: 8,
-                                    shape: const RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(10)),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: ButtonBar(
+                              children: [
+                                Observer(builder: (_) {
+                                  return SizedBox(
+                                    height: 44,
+                                    width: 100,
+                                    // ignore: deprecated_member_use
+                                    child: RaisedButton(
+                                      disabledColor: primaryColor,
+                                      color: primaryColor,
+                                      elevation: 8,
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.all(Radius.circular(10)),
+                                      ),
+                                      onPressed: loginStore.loginPressed,
+                                      child: const Text('ENTRAR', style: TextStyle(color: Colors.white),),
                                     ),
-                                    onPressed: loginStore.loginPressed,
-                                    child: const Text('ENTRAR'),
-                                  ),
-                                );
-                              })
-                            ],
+                                  );
+                                })
+                              ],
+                            ),
                           )
                         ],
                       )
