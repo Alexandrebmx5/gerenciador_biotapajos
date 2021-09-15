@@ -15,7 +15,7 @@ class DashboardScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.all(defaultPadding),
               child: Text(
-                'Bem vindo ao Aquiféro, seu sistema de controle',
+                'Bem vindo ao BioCheck Tapajós, seu sistema de controle',
                 style: TextStyle(fontSize: 22, color: bgColor),
               ),
             )
