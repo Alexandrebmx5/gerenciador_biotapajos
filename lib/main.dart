@@ -5,6 +5,7 @@ import 'package:gerenciador_aquifero/blocs/suggestions_bloc.dart';
 import 'package:gerenciador_aquifero/blocs/user_bloc.dart';
 import 'package:gerenciador_aquifero/common/constants.dart';
 import 'package:gerenciador_aquifero/controllers/MenuController.dart';
+import 'package:gerenciador_aquifero/models/especie/especie_manager.dart';
 import 'package:gerenciador_aquifero/screens/login/login_screen.dart';
 import 'package:gerenciador_aquifero/stores/page_store.dart';
 import 'package:gerenciador_aquifero/stores/user_manager_store.dart';
@@ -27,7 +28,6 @@ void setupLocation() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -40,7 +40,12 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(
             create: (context) => MenuController(),
-          )
+          ),
+          ChangeNotifierProxyProvider0<EspecieManager>(
+            lazy: true,
+            create: (_) => EspecieManager(),
+            update: (_, especieManager) => especieManager..update(),
+          ),
         ],
         child: MaterialApp(
             debugShowCheckedModeBanner: false,

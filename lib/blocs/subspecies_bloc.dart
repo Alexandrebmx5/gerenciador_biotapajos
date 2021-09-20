@@ -199,8 +199,9 @@ class SubspeciesBloc extends BlocBase {
 
   Future _uploadSound() async {
 
-      UploadTask uploadTask = FirebaseStorage.instance.ref().child(specieId)
-          .child(DateTime.now().millisecondsSinceEpoch.toString()).
+      final filePath = '${unsavedData['nome']}.mp3';
+
+      UploadTask uploadTask = FirebaseStorage.instance.ref('sounds/$filePath').
       putData(unsavedData["sound"]);
 
       TaskSnapshot s = await uploadTask;
