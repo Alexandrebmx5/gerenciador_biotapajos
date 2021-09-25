@@ -160,25 +160,71 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
           );
       }),
       actions: [
-        TextButton(
-          onPressed: !store.loading
-              ? () {
-            Navigator.of(context).pop();
-          }
-              : null,
-          child: const Text('Voltar'),
+        Padding(
+          padding: const EdgeInsets.only(left: 32, right: 25),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TextButton(
+                onPressed: !store.loading
+                    ? () {
+                  delete(context);
+                }
+                    : null,
+                child: const Text('Remover', style: TextStyle(color: Colors.red)),
+              ),
+              Row(
+                children: [
+                  TextButton(
+                    onPressed: !store.loading
+                        ? () {
+                      Navigator.of(context).pop();
+                    }
+                        : null,
+                    child: const Text('Voltar'),
+                  ),
+                  Observer(builder: (_){
+                    return GestureDetector(
+                      onTap: store.invalidSendPressed,
+                      child: TextButton(
+                        onPressed: store.sendPressed,
+                        style: TextButton.styleFrom(primary: bgBlue),
+                        child: const Text('Salvar'),
+                      ),
+                    );
+                  }),
+                ],
+              ),
+            ],
+          ),
         ),
-        Observer(builder: (_){
-          return GestureDetector(
-            onTap: store.invalidSendPressed,
-            child: TextButton(
-              onPressed: store.sendPressed,
-              style: TextButton.styleFrom(primary: Colors.red),
-              child: const Text('Salvar'),
-            ),
-          );
-        }),
       ],
+    );
+  }
+
+  void delete(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text('Excluir'),
+        content: Text('Ateção: esse procedimento irá excluir todas as sub espécie cadastradas!'),
+        actions: [
+          TextButton(
+            onPressed: (){
+              Navigator.of(context).pop();
+            },
+            child: Text('Não', style: TextStyle(color: Theme.of(context).primaryColor),),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+              store.especie.delete(store.especie);
+            },
+            child: Text('Sim', style: TextStyle(color: Colors.red),),
+          ),
+        ],
+      ),
     );
   }
 }
