@@ -57,13 +57,13 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
                 children: [
                   Text(
                     'Salvando Espécie',
-                    style: TextStyle(fontSize: 16, color: Colors.red),
+                    style: TextStyle(fontSize: 16, color: bgBlue),
                   ),
                   const SizedBox(
                     height: 16,
                   ),
                   CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation(Colors.red),
+                    valueColor: AlwaysStoppedAnimation(primaryColor),
                   )
                 ],
               ),
@@ -188,7 +188,7 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
                       onTap: store.invalidSendPressed,
                       child: TextButton(
                         onPressed: store.sendPressed,
-                        style: TextButton.styleFrom(primary: bgBlue),
+                        style: TextButton.styleFrom(primary: primaryColor),
                         child: const Text('Salvar'),
                       ),
                     );

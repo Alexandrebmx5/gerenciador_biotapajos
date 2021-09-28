@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:gerenciador_aquifero/models/suggestions/suggestions.dart';
 import 'package:gerenciador_aquifero/screens/suggestions/components/ver_dados_suggestions.dart';
 import 'package:shimmer/shimmer.dart';
 
 class SuggestionTileScreen extends StatelessWidget {
 
-  final Map<String, dynamic> suggestions;
+  final Suggestions suggestions;
 
   SuggestionTileScreen(this.suggestions);
 
@@ -13,14 +14,14 @@ class SuggestionTileScreen extends StatelessWidget {
 
     final textStyle = TextStyle(color: Colors.black);
 
-    if(suggestions.containsKey('name'))
+    if(suggestions.name != null)
       return ListTile(
         title: Text(
-          suggestions['name'],
+          suggestions.name,
           style: textStyle,
         ),
         subtitle: Text(
-          suggestions['email'],
+          suggestions.email,
           style: textStyle,
         ),
         trailing: ElevatedButton(

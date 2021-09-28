@@ -21,7 +21,7 @@ class SuggestionsTile extends StatelessWidget {
                     valueColor: AlwaysStoppedAnimation(primaryColor),
                   ),
                   );
-                else if(snapshot.data.length == 0)
+                else if(snapshot.data.isEmpty)
                   return Center(
                     child: Text('Nenhuma sugestão encontrada!',
                       style: TextStyle(color: bgColor),
@@ -31,6 +31,7 @@ class SuggestionsTile extends StatelessWidget {
                   return ListView.separated(
                       padding: EdgeInsets.all(defaultPadding),
                       itemBuilder: (context, index){
+
                         return SuggestionTileScreen(snapshot.data[index]);
                       },
                       separatorBuilder: (context, index){
