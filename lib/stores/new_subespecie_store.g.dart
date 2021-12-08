@@ -9,174 +9,6 @@ part of 'new_subespecie_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$NewSubEspecieStore on _NewSubEspecieStore, Store {
-  Computed<bool> _$imgValidComputed;
-
-  @override
-  bool get imgValid =>
-      (_$imgValidComputed ??= Computed<bool>(() => super.imgValid,
-              name: '_NewSubEspecieStore.imgValid'))
-          .value;
-  Computed<bool> _$nomeValidComputed;
-
-  @override
-  bool get nomeValid =>
-      (_$nomeValidComputed ??= Computed<bool>(() => super.nomeValid,
-              name: '_NewSubEspecieStore.nomeValid'))
-          .value;
-  Computed<bool> _$nomeEnValidComputed;
-
-  @override
-  bool get nomeEnValid =>
-      (_$nomeEnValidComputed ??= Computed<bool>(() => super.nomeEnValid,
-              name: '_NewSubEspecieStore.nomeEnValid'))
-          .value;
-  Computed<bool> _$reproductionsValidComputed;
-
-  @override
-  bool get reproductionsValid => (_$reproductionsValidComputed ??=
-          Computed<bool>(() => super.reproductionsValid,
-              name: '_NewSubEspecieStore.reproductionsValid'))
-      .value;
-  Computed<bool> _$reproductionsEnValidComputed;
-
-  @override
-  bool get reproductionsEnValid => (_$reproductionsEnValidComputed ??=
-          Computed<bool>(() => super.reproductionsEnValid,
-              name: '_NewSubEspecieStore.reproductionsEnValid'))
-      .value;
-  Computed<bool> _$youKnowValidComputed;
-
-  @override
-  bool get youKnowValid =>
-      (_$youKnowValidComputed ??= Computed<bool>(() => super.youKnowValid,
-              name: '_NewSubEspecieStore.youKnowValid'))
-          .value;
-  Computed<bool> _$youKnowEnValidComputed;
-
-  @override
-  bool get youKnowEnValid =>
-      (_$youKnowEnValidComputed ??= Computed<bool>(() => super.youKnowEnValid,
-              name: '_NewSubEspecieStore.youKnowEnValid'))
-          .value;
-  Computed<bool> _$specieValidComputed;
-
-  @override
-  bool get specieValid =>
-      (_$specieValidComputed ??= Computed<bool>(() => super.specieValid,
-              name: '_NewSubEspecieStore.specieValid'))
-          .value;
-  Computed<bool> _$specieEnValidComputed;
-
-  @override
-  bool get specieEnValid =>
-      (_$specieEnValidComputed ??= Computed<bool>(() => super.specieEnValid,
-              name: '_NewSubEspecieStore.specieEnValid'))
-          .value;
-  Computed<bool> _$subspecieValidComputed;
-
-  @override
-  bool get subspecieValid =>
-      (_$subspecieValidComputed ??= Computed<bool>(() => super.subspecieValid,
-              name: '_NewSubEspecieStore.subspecieValid'))
-          .value;
-  Computed<bool> _$subspecieEnValidComputed;
-
-  @override
-  bool get subspecieEnValid => (_$subspecieEnValidComputed ??= Computed<bool>(
-          () => super.subspecieEnValid,
-          name: '_NewSubEspecieStore.subspecieEnValid'))
-      .value;
-  Computed<bool> _$scientificNameValidComputed;
-
-  @override
-  bool get scientificNameValid => (_$scientificNameValidComputed ??=
-          Computed<bool>(() => super.scientificNameValid,
-              name: '_NewSubEspecieStore.scientificNameValid'))
-      .value;
-  Computed<bool> _$scientificNameEnValidComputed;
-
-  @override
-  bool get scientificNameEnValid => (_$scientificNameEnValidComputed ??=
-          Computed<bool>(() => super.scientificNameEnValid,
-              name: '_NewSubEspecieStore.scientificNameEnValid'))
-      .value;
-  Computed<bool> _$locationsValidComputed;
-
-  @override
-  bool get locationsValid =>
-      (_$locationsValidComputed ??= Computed<bool>(() => super.locationsValid,
-              name: '_NewSubEspecieStore.locationsValid'))
-          .value;
-  Computed<bool> _$locationsEnValidComputed;
-
-  @override
-  bool get locationsEnValid => (_$locationsEnValidComputed ??= Computed<bool>(
-          () => super.locationsEnValid,
-          name: '_NewSubEspecieStore.locationsEnValid'))
-      .value;
-  Computed<bool> _$howKnowValidComputed;
-
-  @override
-  bool get howKnowValid =>
-      (_$howKnowValidComputed ??= Computed<bool>(() => super.howKnowValid,
-              name: '_NewSubEspecieStore.howKnowValid'))
-          .value;
-  Computed<bool> _$howKnowEnValidComputed;
-
-  @override
-  bool get howKnowEnValid =>
-      (_$howKnowEnValidComputed ??= Computed<bool>(() => super.howKnowEnValid,
-              name: '_NewSubEspecieStore.howKnowEnValid'))
-          .value;
-  Computed<bool> _$colorValidComputed;
-
-  @override
-  bool get colorValid =>
-      (_$colorValidComputed ??= Computed<bool>(() => super.colorValid,
-              name: '_NewSubEspecieStore.colorValid'))
-          .value;
-  Computed<bool> _$colorEnValidComputed;
-
-  @override
-  bool get colorEnValid =>
-      (_$colorEnValidComputed ??= Computed<bool>(() => super.colorEnValid,
-              name: '_NewSubEspecieStore.colorEnValid'))
-          .value;
-  Computed<bool> _$activeValidComputed;
-
-  @override
-  bool get activeValid =>
-      (_$activeValidComputed ??= Computed<bool>(() => super.activeValid,
-              name: '_NewSubEspecieStore.activeValid'))
-          .value;
-  Computed<bool> _$activeEnValidComputed;
-
-  @override
-  bool get activeEnValid =>
-      (_$activeEnValidComputed ??= Computed<bool>(() => super.activeEnValid,
-              name: '_NewSubEspecieStore.activeEnValid'))
-          .value;
-  Computed<bool> _$latValidComputed;
-
-  @override
-  bool get latValid =>
-      (_$latValidComputed ??= Computed<bool>(() => super.latValid,
-              name: '_NewSubEspecieStore.latValid'))
-          .value;
-  Computed<bool> _$longValidComputed;
-
-  @override
-  bool get longValid =>
-      (_$longValidComputed ??= Computed<bool>(() => super.longValid,
-              name: '_NewSubEspecieStore.longValid'))
-          .value;
-  Computed<bool> _$formValidComputed;
-
-  @override
-  bool get formValid =>
-      (_$formValidComputed ??= Computed<bool>(() => super.formValid,
-              name: '_NewSubEspecieStore.formValid'))
-          .value;
   Computed<Function> _$sendPressedComputed;
 
   @override
@@ -517,36 +349,6 @@ mixin _$NewSubEspecieStore on _NewSubEspecieStore, Store {
     });
   }
 
-  final _$latAtom = Atom(name: '_NewSubEspecieStore.lat');
-
-  @override
-  String get lat {
-    _$latAtom.reportRead();
-    return super.lat;
-  }
-
-  @override
-  set lat(String value) {
-    _$latAtom.reportWrite(value, super.lat, () {
-      super.lat = value;
-    });
-  }
-
-  final _$longAtom = Atom(name: '_NewSubEspecieStore.long');
-
-  @override
-  String get long {
-    _$longAtom.reportRead();
-    return super.long;
-  }
-
-  @override
-  set long(String value) {
-    _$longAtom.reportWrite(value, super.long, () {
-      super.long = value;
-    });
-  }
-
   final _$showErrorsAtom = Atom(name: '_NewSubEspecieStore.showErrors');
 
   @override
@@ -860,28 +662,6 @@ mixin _$NewSubEspecieStore on _NewSubEspecieStore, Store {
   }
 
   @override
-  void setLat(String value) {
-    final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
-        name: '_NewSubEspecieStore.setLat');
-    try {
-      return super.setLat(value);
-    } finally {
-      _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setLong(String value) {
-    final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
-        name: '_NewSubEspecieStore.setLong');
-    try {
-      return super.setLong(value);
-    } finally {
-      _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void invalidSendPressed() {
     final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
         name: '_NewSubEspecieStore.invalidSendPressed');
@@ -917,36 +697,10 @@ color: ${color},
 colorEn: ${colorEn},
 active: ${active},
 activeEn: ${activeEn},
-lat: ${lat},
-long: ${long},
 showErrors: ${showErrors},
 error: ${error},
 loading: ${loading},
 saveSub: ${saveSub},
-imgValid: ${imgValid},
-nomeValid: ${nomeValid},
-nomeEnValid: ${nomeEnValid},
-reproductionsValid: ${reproductionsValid},
-reproductionsEnValid: ${reproductionsEnValid},
-youKnowValid: ${youKnowValid},
-youKnowEnValid: ${youKnowEnValid},
-specieValid: ${specieValid},
-specieEnValid: ${specieEnValid},
-subspecieValid: ${subspecieValid},
-subspecieEnValid: ${subspecieEnValid},
-scientificNameValid: ${scientificNameValid},
-scientificNameEnValid: ${scientificNameEnValid},
-locationsValid: ${locationsValid},
-locationsEnValid: ${locationsEnValid},
-howKnowValid: ${howKnowValid},
-howKnowEnValid: ${howKnowEnValid},
-colorValid: ${colorValid},
-colorEnValid: ${colorEnValid},
-activeValid: ${activeValid},
-activeEnValid: ${activeEnValid},
-latValid: ${latValid},
-longValid: ${longValid},
-formValid: ${formValid},
 sendPressed: ${sendPressed}
     ''';
   }

@@ -14,8 +14,6 @@ class SubEspecie {
   String howKnow;
   String howKnowEn;
   List img = [];
-  String lat;
-  String long;
   String locations;
   String locationsEn;
   String nome;
@@ -42,8 +40,6 @@ class SubEspecie {
       this.howKnow,
       this.howKnowEn,
       this.img,
-      this.lat,
-      this.long,
       this.locations,
       this.locationsEn,
       this.nome,
@@ -70,8 +66,6 @@ class SubEspecie {
     howKnow = doc.get('howKnow');
     howKnowEn = doc.get('howKnow_en');
     img = List<String>.from(doc.get('img') as List<dynamic>);
-    lat = doc.get('lat');
-    long = doc.get('long');
     locations = doc.get('locations');
     locationsEn = doc.get('locations_en');
     nome = doc.get('nome');
@@ -104,8 +98,6 @@ class SubEspecie {
       'color_en': subEspecie.colorEn,
       'howKnow': subEspecie.howKnow,
       'howKnow_en': subEspecie.howKnowEn,
-      'lat': subEspecie.lat,
-      'long': subEspecie.long,
       'locations': subEspecie.locations,
       'locations_en': subEspecie.locationsEn,
       'nome': subEspecie.nome,
@@ -120,6 +112,8 @@ class SubEspecie {
       'subspecie_en': subEspecie.subspecieEn,
       'youKnow': subEspecie.youKnow,
       'youKnow_en': subEspecie.youKnowEn,
+      'img': subEspecie.img,
+      'sound': subEspecie.sound,
     };
 
     if(subEspecie.id == null){
@@ -137,18 +131,24 @@ class SubEspecie {
 
       for (final image in subEspecie.img) {
         if (image as Uint8List != null) {
-          final UploadTask task = storageRef.child(subEspecie.specie).child(filePath).putData(image);
+          final UploadTask task = storageRef.child(subEspecie.specie).child(
+              filePath).putData(image);
           final TaskSnapshot snapshot = await task;
           final String url = await snapshot.ref.getDownloadURL();
           uploadImage.add(url);
         }
+      }
 
         // sound
 
-        UploadTask uploadTask = FirebaseStorage.instance.ref('sounds/${subEspecie.soundName}').
-        putData(sound);
-        TaskSnapshot s = await uploadTask;
-        String downloadUrl = await s.ref.getDownloadURL();
+        String downloadUrl = '';
+
+        if(subEspecie.sound != null){
+          UploadTask uploadTask = FirebaseStorage.instance.ref('sounds/${subEspecie.soundName}').
+          putData(sound);
+          TaskSnapshot s = await uploadTask;
+          downloadUrl = await s.ref.getDownloadURL();
+        }
 
         DocumentReference firestoreRef =
         firestore.collection('species')
@@ -158,7 +158,7 @@ class SubEspecie {
 
         await firestoreRef.update({'img': uploadImage, 'sound': downloadUrl});
         subEspecie.img = uploadImage;
-      }
+
     } else {
       final List<String> uploadImage = [];
 
@@ -237,6 +237,6 @@ class SubEspecie {
 
   @override
   String toString() {
-    return 'SubEspecie{id: $id, active: $active, activeEn: $activeEn, color: $color, colorEn: $colorEn, howKnow: $howKnow, howKnowEn: $howKnowEn, img: $img, lat: $lat, long: $long, locations: $locations, locationsEn: $locationsEn, nome: $nome, nomeEn: $nomeEn, reproduction: $reproduction, reproductionEn: $reproductionEn, scientificName: $scientificName, scientificNameEn: $scientificNameEn, sound: $sound, specie: $specie, specieEn: $specieEn, subspecie: $subspecie, subspecieEn: $subspecieEn, youKnow: $youKnow, youKnowEn: $youKnowEn}';
+    return 'SubEspecie{id: $id, active: $active, activeEn: $activeEn, color: $color, colorEn: $colorEn, howKnow: $howKnow, howKnowEn: $howKnowEn, img: $img, locations: $locations, locationsEn: $locationsEn, nome: $nome, nomeEn: $nomeEn, reproduction: $reproduction, reproductionEn: $reproductionEn, scientificName: $scientificName, scientificNameEn: $scientificNameEn, sound: $sound, specie: $specie, specieEn: $specieEn, subspecie: $subspecie, subspecieEn: $subspecieEn, youKnow: $youKnow, youKnowEn: $youKnowEn}';
   }
 }

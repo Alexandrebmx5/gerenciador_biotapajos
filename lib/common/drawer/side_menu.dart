@@ -45,31 +45,45 @@ class SideMenu extends StatelessWidget {
               },
             ),
             DrawerListTile(
-              title: "Especie",
-              svgSrc: "assets/icons/menu_tran.svg",
+              title: "Usuarios",
+              svgSrc: "assets/icons/menu_profile.svg",
               press: () {
                 pageStore.setPage(1);
               },
             ),
             DrawerListTile(
-              title: "Sugestões",
-              svgSrc: "assets/icons/menu_task.svg",
+              title: "Conheça as Ucs e Trilhas ecológicas",
+              svgSrc: "assets/icons/menu_store.svg",
               press: () {
                 pageStore.setPage(2);
               },
             ),
             DrawerListTile(
-              title: "Usuarios",
-              svgSrc: "assets/icons/menu_profile.svg",
+              title: "Informe e atualidades",
+              svgSrc: "assets/icons/menu_store.svg",
               press: () {
                 pageStore.setPage(3);
               },
             ),
             DrawerListTile(
-              title: "Guia Prático",
-              svgSrc: "assets/icons/menu_store.svg",
+              title: "Catálagos de Espécies",
+              svgSrc: "assets/icons/menu_tran.svg",
               press: () {
                 pageStore.setPage(4);
+              },
+            ),
+            DrawerListTile(
+              title: "Registro dos usúarios",
+              svgSrc: "assets/icons/menu_task.svg",
+              press: () {
+                pageStore.setPage(5);
+              },
+            ),
+            DrawerListTile(
+              title: "Quem somos",
+              svgSrc: "assets/icons/menu_setting.svg",
+              press: () {
+                pageStore.setPage(6);
               },
             ),
             SizedBox(

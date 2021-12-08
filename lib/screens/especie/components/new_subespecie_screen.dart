@@ -80,16 +80,13 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
               style: TextStyle(color: secondaryColor)),
           actions: [
             Observer(builder: (_) {
-              return GestureDetector(
-                onTap: store.invalidSendPressed,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.only(right: 20, bottom: 10, top: 10),
-                  child: ElevatedButton(
-                      onPressed: store.sendPressed,
-                      style: ElevatedButton.styleFrom(primary: bgBlue),
-                      child: Text('Salva')),
-                ),
+              return Padding(
+                padding:
+                    const EdgeInsets.only(right: 20, bottom: 10, top: 10),
+                child: ElevatedButton(
+                    onPressed: store.sendPressed,
+                    style: ElevatedButton.styleFrom(primary: bgBlue),
+                    child: Text('Salva')),
               );
             })
           ],
@@ -524,44 +521,6 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                             ),
                           );
                         }),
-                        Observer(builder: (_) {
-                          return Container(
-                            margin:
-                                EdgeInsets.only(left: 16, top: 16, bottom: 16),
-                            width: MediaQuery.of(context).size.width * 0.2,
-                            height: 50,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey[300]),
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.grey[100]),
-                            child: TextFormField(
-                              initialValue: store.lat ?? '',
-                              onChanged: store.setLat,
-                              style: _fieldStyle,
-                              decoration: _buildDecoration('Latidade'),
-                              //validator: validateTitle,
-                            ),
-                          );
-                        }),
-                        Observer(builder: (_) {
-                          return Container(
-                            margin:
-                                EdgeInsets.only(left: 16, top: 16, bottom: 16),
-                            width: MediaQuery.of(context).size.width * 0.2,
-                            height: 50,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey[300]),
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.grey[100]),
-                            child: TextFormField(
-                              initialValue: store.long ?? '',
-                              onChanged: store.setLong,
-                              style: _fieldStyle,
-                              decoration: _buildDecoration('Longitude'),
-                              //validator: validateTitle,
-                            ),
-                          );
-                        })
                       ],
                     )
                   ]);
@@ -953,44 +912,6 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                             ),
                           );
                         }),
-                        Observer(builder: (_) {
-                          return Container(
-                            margin:
-                                EdgeInsets.only(left: 16, top: 16, bottom: 16),
-                            width: MediaQuery.of(context).size.width * 0.2,
-                            height: 50,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey[300]),
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.grey[100]),
-                            child: TextFormField(
-                              initialValue: store.lat ?? '',
-                              onChanged: store.setLat,
-                              style: _fieldStyle,
-                              decoration: _buildDecoration('Latidade'),
-                              //validator: validateTitle,
-                            ),
-                          );
-                        }),
-                        Observer(builder: (_) {
-                          return Container(
-                            margin:
-                                EdgeInsets.only(left: 16, top: 16, bottom: 16),
-                            width: MediaQuery.of(context).size.width * 0.2,
-                            height: 50,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey[300]),
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.grey[100]),
-                            child: TextFormField(
-                              initialValue: store.long ?? '',
-                              onChanged: store.setLong,
-                              style: _fieldStyle,
-                              decoration: _buildDecoration('Longitude'),
-                              //validator: validateTitle,
-                            ),
-                          );
-                        })
                       ]);
               },
             ),

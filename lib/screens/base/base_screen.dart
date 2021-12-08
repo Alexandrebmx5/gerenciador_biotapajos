@@ -33,10 +33,12 @@ class _BaseScreenState extends State<BaseScreen> {
         physics: NeverScrollableScrollPhysics(),
         children: [
           MainScreen(),
-          EspecieScreen(),
-          SuggestionsScreen(),
           UsersScreen(),
           PdfScreen(),
+          Container(),
+          EspecieScreen(),
+          SuggestionsScreen(),
+          Container(),
         ],
       ),
     );

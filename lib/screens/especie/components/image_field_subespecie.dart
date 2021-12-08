@@ -92,28 +92,6 @@ class ImagesFieldSubEspecie extends StatelessWidget {
               },
             )
         ),
-        Observer(builder: (_) {
-          if (store.imgError != null)
-            return Container(
-              alignment: Alignment.centerLeft,
-              decoration: BoxDecoration(
-                  border: Border(
-                      top: BorderSide(color: Colors.red)
-                  )
-              ),
-              padding: const EdgeInsets.fromLTRB(16, 8, 0, 0),
-              child: Text(
-                store.imgError,
-                style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 12
-                ),
-              ),
-            );
-          else
-            return Container();
-        },
-        )
       ],
     );
   }
