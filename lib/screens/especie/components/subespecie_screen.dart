@@ -41,7 +41,7 @@ class _SubEspecieScreenState extends State<SubEspecieScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Espécie: ${widget.especie.pt}'),
+        title: Text('${widget.especie.pt}'),
         backgroundColor: primaryColor,
         actions: [
           Padding(

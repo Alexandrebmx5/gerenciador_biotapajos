@@ -30,7 +30,7 @@ class SuggestionTileScreen extends StatelessWidget {
                 context: context,
                 builder: (context) => VerDadosSuggestions(suggestions));
           },
-          child: Text('Ver dados'),
+          child: Text('Ver Registro'),
         ),
       );
     else

@@ -44,7 +44,7 @@ class _VerDadosSuggestionsState extends State<VerDadosSuggestions> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Arquivo:'),
+                          Text('Imagem ou arquivo:'),
                           TextButton(
                               child: Text('Baixar'),
                               style: TextButton.styleFrom(primary: primaryColor),
@@ -65,7 +65,7 @@ class _VerDadosSuggestionsState extends State<VerDadosSuggestions> {
                               onPressed: () {
                                 launchURL(
                                     url:
-                                        'https://www.google.com/maps/search/?api=1&amp;query=${suggestions.lat},${suggestions.long}');
+                                    'https://www.google.com/maps/search/?api=1&amp;query=${suggestions.lat},${suggestions.long}');
                               })
                         ],
                       ),
@@ -89,12 +89,94 @@ class _VerDadosSuggestionsState extends State<VerDadosSuggestions> {
                     SizedBox(
                       height: 5,
                     ),
-                    if (suggestions?.text != null) ...[
-                      Text('Texto:'),
-                      Text(suggestions.text),
+                    if (suggestions.date != null && suggestions.time != null) ...[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Data:'),
+                          Text(suggestions.date),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Hora:'),
+                          Text(suggestions.date),
+                        ],
+                      ),
                     ],
                     SizedBox(
-                      height: 10,
+                      height: 5,
+                    ),
+                    if (suggestions.location != null) ...[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Local:'),
+                          Text(suggestions.location),
+                        ],
+                      ),
+                    ],
+                    SizedBox(
+                      height: 5,
+                    ),
+                    if (suggestions.environment != null) ...[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Ambiente:'),
+                          Text(suggestions.environment),
+                        ],
+                      ),
+                    ],
+                    SizedBox(
+                      height: 5,
+                    ),
+                    if (suggestions.sightedPlace != null) ...[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Local avistado:'),
+                          Text(suggestions.sightedPlace),
+                        ],
+                      ),
+                    ],
+                    SizedBox(
+                      height: 5,
+                    ),
+                    if (suggestions.behavior != null) ...[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Comportamento:'),
+                          Text(suggestions.behavior),
+                        ],
+                      ),
+                    ],
+                    SizedBox(
+                      height: 5,
+                    ),
+                    if (suggestions.approved != null) ...[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Aprovado:'),
+                          Text(suggestions.approved ? 'Sim' : 'Não'),
+                        ],
+                      ),
+                    ],
+                    SizedBox(
+                      height: 5,
+                    ),
+                    if (suggestions.comment != null) ...[
+                      Text('Comentário:'),
+                      Text(suggestions.comment),
+                    ],
+                    SizedBox(
+                      height: 30,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -121,8 +203,29 @@ class _VerDadosSuggestionsState extends State<VerDadosSuggestions> {
                           width: 20,
                         ),
                         TextButton(
+                          child: Text('Aprovar'),
+                          style: TextButton.styleFrom(primary: primaryColor),
+                          onPressed: !loading ? () async {
+                            setState(() {
+                              loading = true;
+                            });
+                            try {
+                              await suggestions.approvedSuggestions(suggestions);
+                              Navigator.of(context).pop();
+                            } catch (e){
+                              setState(() {
+                                loading = false;
+                                error = e.toString();
+                              });
+                            }
+                          } : null,
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        TextButton(
                             child: Text('Fechar'),
-                            style: TextButton.styleFrom(primary: primaryColor),
+                            style: TextButton.styleFrom(primary: Colors.black),
                             onPressed: Navigator.of(context).pop),
                       ],
                     )

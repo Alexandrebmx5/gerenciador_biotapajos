@@ -56,7 +56,7 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    'Salvando Espécie',
+                    'Salvando',
                     style: TextStyle(fontSize: 16, color: bgBlue),
                   ),
                   const SizedBox(
@@ -207,7 +207,7 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
       context: context,
       builder: (_) => AlertDialog(
         title: Text('Excluir'),
-        content: Text('Ateção: esse procedimento irá excluir todas as sub espécie cadastradas!'),
+        content: Text('Ateção: esse procedimento irá excluir todas as espécie cadastradas!'),
         actions: [
           TextButton(
             onPressed: (){

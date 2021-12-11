@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gerenciador_aquifero/screens/main/about_me_screen.dart';
 import 'package:gerenciador_aquifero/screens/main/especie_screen.dart';
 import 'package:gerenciador_aquifero/screens/main/main_screen.dart';
 import 'package:gerenciador_aquifero/screens/main/pdf_screen.dart';
@@ -38,7 +39,7 @@ class _BaseScreenState extends State<BaseScreen> {
           Container(),
           EspecieScreen(),
           SuggestionsScreen(),
-          Container(),
+          AboutMeScreen(),
         ],
       ),
     );

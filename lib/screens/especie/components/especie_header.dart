@@ -25,7 +25,7 @@ class EspecieHeader extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(left: defaultPadding),
               child: Text(
-                "Lista de Especies",
+                "Catalago de Espécies",
                 style: Theme.of(context).textTheme.headline6,
               ),
             ),
@@ -38,7 +38,7 @@ class EspecieHeader extends StatelessWidget {
               height: 44,
               width: 70,
               child: ElevatedButton(
-                child: Text('Nova Espécie'),
+                child: Text('Nova categoria'),
                 style: ElevatedButton.styleFrom(primary: bgBlue),
                 onPressed: () {
                   showDialog(
