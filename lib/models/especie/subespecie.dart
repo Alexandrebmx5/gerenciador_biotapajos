@@ -112,7 +112,7 @@ class SubEspecie {
       'subspecie_en': subEspecie.subspecieEn,
       'youKnow': subEspecie.youKnow,
       'youKnow_en': subEspecie.youKnowEn,
-      'img': subEspecie.img,
+      if(subEspecie.img.isEmpty) 'img': [],
       'sound': subEspecie.sound,
     };
 
@@ -140,7 +140,6 @@ class SubEspecie {
       }
 
         // sound
-
         String downloadUrl = '';
 
         if(subEspecie.sound != null){
@@ -223,13 +222,13 @@ class SubEspecie {
 
   Future<void> delete(SubEspecie subEspecie) async {
     try {
-      DocumentReference firestoreRef = firestore
+      DocumentReference ref = firestore
           .collection('species')
           .doc(subEspecie.specie.toLowerCase())
           .collection('subspecies')
           .doc(subEspecie.id);
 
-      await firestoreRef.delete();
+      await ref.delete();
     } catch (e){
       Future.error('Error ao deletar sub espécie');
     }

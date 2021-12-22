@@ -218,12 +218,8 @@ abstract class _NewSubEspecieStore with Store {
     subEspecie.activeEn = activeEn;
 
     loading = true;
-    try {
       await SubEspecie().save(subEspecie);
       saveSub = true;
-    } catch (e){
-      error = e;
-    }
     loading = false;
   }
 

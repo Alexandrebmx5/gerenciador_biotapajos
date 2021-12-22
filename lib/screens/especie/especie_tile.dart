@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciador_aquifero/common/constants.dart';
 import 'package:gerenciador_aquifero/models/especie/especie_manager.dart';
@@ -19,7 +18,7 @@ class _EspecieTileState extends State<EspecieTile> {
       if (especies.isEmpty)
         return Center(
             child: Text(
-              'Nenhuma categoria encontrada!',
+              'Nenhuma categoria de espécie encontrada!',
               style: TextStyle(color: bgColor),
             ));
       return ListView.builder(

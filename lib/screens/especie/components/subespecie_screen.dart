@@ -86,7 +86,7 @@ class _SubEspecieScreenState extends State<SubEspecieScreen> {
                     if (subEspecies.isEmpty) {
                       return Center(
                         child: Text(
-                          'nenhuma sub espécie encontrada!',
+                          'nenhuma espécie encontrada!',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
