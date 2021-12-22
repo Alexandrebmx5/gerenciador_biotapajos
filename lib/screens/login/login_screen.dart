@@ -73,65 +73,57 @@ class _LoginScreenState extends State<LoginScreen> {
                       Observer(builder: (_) {
                         return Padding(
                             padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
-                            child: Container(
-                              height: 60,
-                              decoration: BoxDecoration(
-                                  color: Theme.of(context)
-                                      .primaryColor
-                                      .withAlpha(50),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: TextFormField(
-                                  onChanged: loginStore.setEmail,
-                                  keyboardType: TextInputType.emailAddress,
-                                  autocorrect: false,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                  ),
-                                  decoration: InputDecoration(
-                                      errorText: loginStore.emailError,
-                                      border: InputBorder.none,
-                                      icon: Icon(
-                                        Icons.email,
-                                        color: primaryColor,
-                                      ),
-                                      hintText: 'Email',
-                                      hintStyle: TextStyle(color: bgColor)),
-                                ),
+                            child: TextFormField(
+                              onChanged: loginStore.setEmail,
+                              keyboardType: TextInputType.emailAddress,
+                              autocorrect: false,
+                              style: TextStyle(
+                                color: Colors.black,
                               ),
+                              decoration: InputDecoration(
+                                  errorText: loginStore.emailError,
+                                  enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.black),
+                                      borderRadius: BorderRadius.circular(10)
+                                  ),
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.black),
+                                      borderRadius: BorderRadius.circular(10)
+                                  ),
+                                  prefixIcon: Icon(
+                                    Icons.email,
+                                    color: primaryColor,
+                                  ),
+                                  hintText: 'Email',
+                                  hintStyle: TextStyle(color: bgColor)),
                             ));
                       }),
                       Observer(builder: (_) {
                         return Padding(
                             padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                            child: Container(
-                              height: 60,
-                              decoration: BoxDecoration(
-                                  color: Theme.of(context)
-                                      .primaryColor
-                                      .withAlpha(50),
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: TextFormField(
-                                  onChanged: loginStore.setPassword,
-                                  autocorrect: false,
-                                  obscureText: true,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                  ),
-                                  decoration: InputDecoration(
-                                      errorText: loginStore.passwordError,
-                                      border: InputBorder.none,
-                                      icon: Icon(
-                                        Icons.lock,
-                                        color: primaryColor,
-                                      ),
-                                      hintStyle: TextStyle(color: bgColor),
-                                      hintText: 'Senha'),
-                                ),
+                            child: TextFormField(
+                              onChanged: loginStore.setPassword,
+                              autocorrect: false,
+                              obscureText: true,
+                              style: TextStyle(
+                                color: Colors.black,
                               ),
+                              decoration: InputDecoration(
+                                  errorText: loginStore.passwordError,
+                                  enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.black),
+                                      borderRadius: BorderRadius.circular(10)
+                                  ),
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(color: Colors.black),
+                                      borderRadius: BorderRadius.circular(10)
+                                  ),
+                                  prefixIcon: Icon(
+                                    Icons.lock,
+                                    color: primaryColor,
+                                  ),
+                                  hintStyle: TextStyle(color: bgColor),
+                                  hintText: 'Senha'),
                             ));
                       }),
                       Observer(builder: (_) {
