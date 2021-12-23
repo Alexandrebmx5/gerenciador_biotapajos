@@ -120,7 +120,7 @@ class _SubEspecieScreenState extends State<SubEspecieScreen> {
                                     ),
                                     Expanded(
                                       child: Text(
-                                        subEspecies[index].nome,
+                                        subEspecies[index].specie,
                                         style: TextStyle(color: Colors.grey[850], fontWeight: FontWeight.w500),
                                       ),
                                     ),

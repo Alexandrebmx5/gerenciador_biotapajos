@@ -129,7 +129,6 @@ class SubEspecie {
       'where_live': subEspecie.whereLive,
       'where_live_en': subEspecie.whereLiveEn,
       if(subEspecie.img.isEmpty) 'img': [],
-      'sound': subEspecie.sound,
     };
 
     if(subEspecie.id == null){
@@ -158,7 +157,7 @@ class SubEspecie {
         String downloadUrl = '';
 
         if(subEspecie.sound != null){
-          UploadTask uploadTask = FirebaseStorage.instance.ref('sounds/${subEspecie.soundName}').
+          UploadTask uploadTask = storageRef.child('sounds/${subEspecie.soundName}').
           putData(sound);
           TaskSnapshot s = await uploadTask;
           downloadUrl = await s.ref.getDownloadURL();

@@ -66,7 +66,7 @@ class SideMenu extends StatelessWidget {
               },
             ),
             DrawerListTile(
-              title: "Catálagos de Espécies",
+              title: "Catálago de Espécies",
               svgSrc: "assets/icons/menu_tran.svg",
               press: () {
                 pageStore.setPage(4);
