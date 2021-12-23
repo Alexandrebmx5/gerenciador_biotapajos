@@ -131,7 +131,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                       children: [
                         Observer(builder: (_) {
                           return Container(
-                            margin: EdgeInsets.only(left: 16),
+                            margin: EdgeInsets.only(left: 16, top: 16),
                             width: MediaQuery.of(context).size.width * 0.41,
                             height: 50,
                             decoration: BoxDecoration(
@@ -139,17 +139,17 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey[100]),
                             child: TextFormField(
-                              initialValue: store.nome ?? '',
-                              onChanged: store.setNome,
+                              initialValue: store.specie ?? '',
+                              onChanged: store.setSpecie,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Nome'),
+                              decoration: _buildDecoration('Espécie'),
                               //validator: validateTitle,
                             ),
                           );
                         }),
                         Observer(builder: (_) {
                           return Container(
-                            margin: EdgeInsets.only(left: 16),
+                            margin: EdgeInsets.only(left: 16, top: 16),
                             width: MediaQuery.of(context).size.width * 0.41,
                             height: 50,
                             decoration: BoxDecoration(
@@ -157,14 +157,15 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey[100]),
                             child: TextFormField(
-                              initialValue: store.nomeEn ?? '',
-                              onChanged: store.setNomeEn,
+                              initialValue: store.specieEn ?? '',
+                              onChanged: store.setSpecieEn,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Nome em inglês'),
+                              decoration:
+                              _buildDecoration('Espécie em inglês'),
                               //validator: validateTitle,
                             ),
                           );
-                        }),
+                        })
                       ],
                     ),
                     Row(
@@ -289,7 +290,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                         }),
                         Observer(builder: (_) {
                           return Container(
-                            margin: EdgeInsets.only(left: 16, top: 16),
+                            margin: EdgeInsets.only(left: 16),
                             width: MediaQuery.of(context).size.width * 0.2,
                             height: 50,
                             decoration: BoxDecoration(
@@ -297,17 +298,17 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey[100]),
                             child: TextFormField(
-                              initialValue: store.specie ?? '',
-                              onChanged: store.setSpecie,
+                              initialValue: store.nome ?? '',
+                              onChanged: store.setNome,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Espécie'),
+                              decoration: _buildDecoration('Nome popular'),
                               //validator: validateTitle,
                             ),
                           );
                         }),
                         Observer(builder: (_) {
                           return Container(
-                            margin: EdgeInsets.only(left: 16, top: 16),
+                            margin: EdgeInsets.only(left: 16),
                             width: MediaQuery.of(context).size.width * 0.2,
                             height: 50,
                             decoration: BoxDecoration(
@@ -315,15 +316,14 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey[100]),
                             child: TextFormField(
-                              initialValue: store.specieEn ?? '',
-                              onChanged: store.setSpecieEn,
+                              initialValue: store.nomeEn ?? '',
+                              onChanged: store.setNomeEn,
                               style: _fieldStyle,
-                              decoration:
-                                  _buildDecoration('Espécie em inglês'),
+                              decoration: _buildDecoration('Nome popular em inglês'),
                               //validator: validateTitle,
                             ),
                           );
-                        })
+                        }),
                       ],
                     ),
                     Row(
@@ -486,7 +486,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                         Observer(builder: (_) {
                           return Container(
                             margin:
-                                EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                                EdgeInsets.only(left: 16, top: 16),
                             width: MediaQuery.of(context).size.width * 0.2,
                             height: 50,
                             decoration: BoxDecoration(
@@ -505,7 +505,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                         Observer(builder: (_) {
                           return Container(
                             margin:
-                                EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                                EdgeInsets.only(left: 16, top: 16),
                             width: MediaQuery.of(context).size.width * 0.2,
                             height: 50,
                             decoration: BoxDecoration(
@@ -521,8 +521,88 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                             ),
                           );
                         }),
+                        Observer(builder: (_) {
+                          return Container(
+                            margin:
+                            EdgeInsets.only(left: 16, top: 16),
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey[300]),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[100]),
+                            child: TextFormField(
+                              initialValue: store.whereLive ?? '',
+                              onChanged: store.setWhereLive,
+                              style: _fieldStyle,
+                              decoration: _buildDecoration('Onde vivem?'),
+                              //validator: validateTitle,
+                            ),
+                          );
+                        }),
+                        Observer(builder: (_) {
+                          return Container(
+                            margin:
+                            EdgeInsets.only(left: 16, top: 16),
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey[300]),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[100]),
+                            child: TextFormField(
+                              initialValue: store.whereLiveEn ?? '',
+                              onChanged: store.setWhereLiveEn,
+                              style: _fieldStyle,
+                              decoration: _buildDecoration('Ondem vivem em inglês'),
+                              //validator: validateTitle,
+                            ),
+                          );
+                        }),
                       ],
-                    )
+                    ),
+                      Row(
+                        children: [
+                          Observer(builder: (_) {
+                            return Container(
+                              margin:
+                              EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                              width: MediaQuery.of(context).size.width * 0.2,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]),
+                              child: TextFormField(
+                                initialValue: store.activity ?? '',
+                                onChanged: store.setActivity,
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Atividade'),
+                                //validator: validateTitle,
+                              ),
+                            );
+                          }),
+                          Observer(builder: (_) {
+                            return Container(
+                              margin:
+                              EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                              width: MediaQuery.of(context).size.width * 0.2,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]),
+                              child: TextFormField(
+                                initialValue: store.activityEn ?? '',
+                                onChanged: store.setActivityEn,
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Atividade em inglês'),
+                                //validator: validateTitle,
+                              ),
+                            );
+                          }),
+                        ],
+                      )
                   ]);
                 else
                   return Column(
@@ -544,7 +624,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                         SizedBox(height: 20),
                         Observer(builder: (_) {
                           return Container(
-                            margin: EdgeInsets.only(left: 16),
+                            margin: EdgeInsets.only(left: 16, top: 16),
                             width: MediaQuery.of(context).size.width * 0.41,
                             height: 50,
                             decoration: BoxDecoration(
@@ -552,17 +632,17 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey[100]),
                             child: TextFormField(
-                              initialValue: store.nome ?? '',
-                              onChanged: store.setNome,
+                              initialValue: store.specie ?? '',
+                              onChanged: store.setSpecie,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Nome'),
+                              decoration: _buildDecoration('Espécie'),
                               //validator: validateTitle,
                             ),
                           );
                         }),
                         Observer(builder: (_) {
                           return Container(
-                            margin: EdgeInsets.only(left: 16),
+                            margin: EdgeInsets.only(left: 16, top: 16),
                             width: MediaQuery.of(context).size.width * 0.41,
                             height: 50,
                             decoration: BoxDecoration(
@@ -570,10 +650,11 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey[100]),
                             child: TextFormField(
-                              initialValue: store.nomeEn ?? '',
-                              onChanged: store.setNomeEn,
+                              initialValue: store.specieEn ?? '',
+                              onChanged: store.setSpecieEn,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Nome em inglês'),
+                              decoration:
+                              _buildDecoration('Espécie em inglês'),
                               //validator: validateTitle,
                             ),
                           );
@@ -692,7 +773,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                         }),
                         Observer(builder: (_) {
                           return Container(
-                            margin: EdgeInsets.only(left: 16, top: 16),
+                            margin: EdgeInsets.only(left: 16),
                             width: MediaQuery.of(context).size.width * 0.2,
                             height: 50,
                             decoration: BoxDecoration(
@@ -700,17 +781,17 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey[100]),
                             child: TextFormField(
-                              initialValue: store.specie ?? '',
-                              onChanged: store.setSpecie,
+                              initialValue: store.nome ?? '',
+                              onChanged: store.setNome,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Espécie'),
+                              decoration: _buildDecoration('Nome'),
                               //validator: validateTitle,
                             ),
                           );
                         }),
                         Observer(builder: (_) {
                           return Container(
-                            margin: EdgeInsets.only(left: 16, top: 16),
+                            margin: EdgeInsets.only(left: 16),
                             width: MediaQuery.of(context).size.width * 0.2,
                             height: 50,
                             decoration: BoxDecoration(
@@ -718,11 +799,10 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey[100]),
                             child: TextFormField(
-                              initialValue: store.specieEn ?? '',
-                              onChanged: store.setSpecieEn,
+                              initialValue: store.nomeEn ?? '',
+                              onChanged: store.setNomeEn,
                               style: _fieldStyle,
-                              decoration:
-                                  _buildDecoration('Espécie em inglês'),
+                              decoration: _buildDecoration('Nome em inglês'),
                               //validator: validateTitle,
                             ),
                           );
@@ -908,6 +988,82 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               onChanged: store.setSpecieSimilarEn,
                               style: _fieldStyle,
                               decoration: _buildDecoration('Espécie similar em inglês'),
+                              //validator: validateTitle,
+                            ),
+                          );
+                        }),
+                        Observer(builder: (_) {
+                          return Container(
+                            margin:
+                            EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey[300]),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[100]),
+                            child: TextFormField(
+                              initialValue: store.whereLive ?? '',
+                              onChanged: store.setWhereLive,
+                              style: _fieldStyle,
+                              decoration: _buildDecoration('Onde vivem?'),
+                              //validator: validateTitle,
+                            ),
+                          );
+                        }),
+                        Observer(builder: (_) {
+                          return Container(
+                            margin:
+                            EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey[300]),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[100]),
+                            child: TextFormField(
+                              initialValue: store.whereLiveEn ?? '',
+                              onChanged: store.setWhereLiveEn,
+                              style: _fieldStyle,
+                              decoration: _buildDecoration('Ondem vivem em inglês'),
+                              //validator: validateTitle,
+                            ),
+                          );
+                        }),
+                        Observer(builder: (_) {
+                          return Container(
+                            margin:
+                            EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey[300]),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[100]),
+                            child: TextFormField(
+                              initialValue: store.activity ?? '',
+                              onChanged: store.setActivity,
+                              style: _fieldStyle,
+                              decoration: _buildDecoration('Atividade'),
+                              //validator: validateTitle,
+                            ),
+                          );
+                        }),
+                        Observer(builder: (_) {
+                          return Container(
+                            margin:
+                            EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey[300]),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[100]),
+                            child: TextFormField(
+                              initialValue: store.activityEn ?? '',
+                              onChanged: store.setActivityEn,
+                              style: _fieldStyle,
+                              decoration: _buildDecoration('Atividade em inglês'),
                               //validator: validateTitle,
                             ),
                           );

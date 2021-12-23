@@ -30,6 +30,10 @@ class SubEspecie {
   String specieEn;
   String youKnow;
   String youKnowEn;
+  String activityEn;
+  String activity;
+  String whereLive;
+  String whereLiveEn;
 
   SubEspecie(
       {this.id,
@@ -55,7 +59,11 @@ class SubEspecie {
       this.specie,
       this.specieEn,
       this.youKnow,
-      this.youKnowEn});
+      this.youKnowEn,
+      this.activity,
+      this.activityEn,
+      this.whereLive,
+      this.whereLiveEn});
 
   SubEspecie.fromDocument(DocumentSnapshot doc){
     id = doc.id;
@@ -81,6 +89,10 @@ class SubEspecie {
     specieEn = doc.get('specie_en');
     youKnow = doc.get('youKnow');
     youKnowEn = doc.get('youKnow');
+    activity = doc.get('activity');
+    activityEn = doc.get('activity_en');
+    whereLive = doc.get('where_live');
+    whereLiveEn = doc.get('where_live_en');
   }
 
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -112,6 +124,10 @@ class SubEspecie {
       'group_en': subEspecie.groupEn,
       'youKnow': subEspecie.youKnow,
       'youKnow_en': subEspecie.youKnowEn,
+      'activity': subEspecie.activity,
+      'activity_en': subEspecie.activityEn,
+      'where_live': subEspecie.whereLive,
+      'where_live_en': subEspecie.whereLiveEn,
       if(subEspecie.img.isEmpty) 'img': [],
       'sound': subEspecie.sound,
     };
@@ -236,6 +252,6 @@ class SubEspecie {
 
   @override
   String toString() {
-    return 'SubEspecie{id: $id, specieSimilar: $specieSimilar, specieSimilarEn: $specieSimilarEn, color: $color, colorEn: $colorEn, howKnow: $howKnow, howKnowEn: $howKnowEn, img: $img, locations: $locations, locationsEn: $locationsEn, nome: $nome, nomeEn: $nomeEn, reproduction: $reproduction, reproductionEn: $reproductionEn, family: $family, familyEn: $familyEn, sound: $sound, soundName: $soundName, group: $group, groupEn: $groupEn, specie: $specie, specieEn: $specieEn, youKnow: $youKnow, youKnowEn: $youKnowEn}';
+    return 'SubEspecie{id: $id, specieSimilar: $specieSimilar, specieSimilarEn: $specieSimilarEn, color: $color, colorEn: $colorEn, howKnow: $howKnow, howKnowEn: $howKnowEn, img: $img, locations: $locations, locationsEn: $locationsEn, nome: $nome, nomeEn: $nomeEn, reproduction: $reproduction, reproductionEn: $reproductionEn, family: $family, familyEn: $familyEn, sound: $sound, soundName: $soundName, group: $group, groupEn: $groupEn, specie: $specie, specieEn: $specieEn, youKnow: $youKnow, youKnowEn: $youKnowEn, activityEn: $activityEn, activity: $activity, whereLive: $whereLive, whereLiveEn: $whereLiveEn}';
   }
 }

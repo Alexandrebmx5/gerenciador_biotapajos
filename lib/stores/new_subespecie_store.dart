@@ -32,6 +32,10 @@ abstract class _NewSubEspecieStore with Store {
     colorEn = subEspecie.colorEn ?? '';
     specieSimilar = subEspecie.specieSimilar ?? '';
     specieSimilarEn = subEspecie.specieSimilarEn ?? '';
+    activity = subEspecie.activity ?? '';
+    activityEn = subEspecie.activityEn ?? '';
+    whereLive = subEspecie.whereLive ?? '';
+    whereLiveEn = subEspecie.whereLiveEn ?? '';
   }
 
   final SubEspecie subEspecie;
@@ -172,6 +176,30 @@ abstract class _NewSubEspecieStore with Store {
   @action
   void setSpecieSimilarEn(String value) => specieSimilarEn = value;
 
+  @observable
+  String activity = '';
+
+  @action
+  void setActivity(String value) => activity = value;
+
+  @observable
+  String activityEn = '';
+
+  @action
+  void setActivityEn(String value) => activityEn = value;
+
+  @observable
+  String whereLive = '';
+
+  @action
+  void setWhereLive(String value) => whereLive = value;
+
+  @observable
+  String whereLiveEn = '';
+
+  @action
+  void setWhereLiveEn(String value) => whereLiveEn = value;
+
   @computed
   Function get sendPressed => _send;
 
@@ -216,10 +244,14 @@ abstract class _NewSubEspecieStore with Store {
     subEspecie.colorEn = colorEn;
     subEspecie.specieSimilar = specieSimilar;
     subEspecie.specieSimilarEn = specieSimilarEn;
+    subEspecie.activity = activity;
+    subEspecie.activityEn = activityEn;
+    subEspecie.whereLive = whereLive;
+    subEspecie.whereLiveEn = whereLiveEn;
 
     loading = true;
-      await SubEspecie().save(subEspecie);
-      saveSub = true;
+    await SubEspecie().save(subEspecie);
+    saveSub = true;
     loading = false;
   }
 

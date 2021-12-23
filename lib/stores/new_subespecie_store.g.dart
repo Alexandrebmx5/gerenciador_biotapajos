@@ -349,6 +349,66 @@ mixin _$NewSubEspecieStore on _NewSubEspecieStore, Store {
     });
   }
 
+  final _$activityAtom = Atom(name: '_NewSubEspecieStore.activity');
+
+  @override
+  String get activity {
+    _$activityAtom.reportRead();
+    return super.activity;
+  }
+
+  @override
+  set activity(String value) {
+    _$activityAtom.reportWrite(value, super.activity, () {
+      super.activity = value;
+    });
+  }
+
+  final _$activityEnAtom = Atom(name: '_NewSubEspecieStore.activityEn');
+
+  @override
+  String get activityEn {
+    _$activityEnAtom.reportRead();
+    return super.activityEn;
+  }
+
+  @override
+  set activityEn(String value) {
+    _$activityEnAtom.reportWrite(value, super.activityEn, () {
+      super.activityEn = value;
+    });
+  }
+
+  final _$whereLiveAtom = Atom(name: '_NewSubEspecieStore.whereLive');
+
+  @override
+  String get whereLive {
+    _$whereLiveAtom.reportRead();
+    return super.whereLive;
+  }
+
+  @override
+  set whereLive(String value) {
+    _$whereLiveAtom.reportWrite(value, super.whereLive, () {
+      super.whereLive = value;
+    });
+  }
+
+  final _$whereLiveEnAtom = Atom(name: '_NewSubEspecieStore.whereLiveEn');
+
+  @override
+  String get whereLiveEn {
+    _$whereLiveEnAtom.reportRead();
+    return super.whereLiveEn;
+  }
+
+  @override
+  set whereLiveEn(String value) {
+    _$whereLiveEnAtom.reportWrite(value, super.whereLiveEn, () {
+      super.whereLiveEn = value;
+    });
+  }
+
   final _$showErrorsAtom = Atom(name: '_NewSubEspecieStore.showErrors');
 
   @override
@@ -662,6 +722,50 @@ mixin _$NewSubEspecieStore on _NewSubEspecieStore, Store {
   }
 
   @override
+  void setActivity(String value) {
+    final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
+        name: '_NewSubEspecieStore.setActivity');
+    try {
+      return super.setActivity(value);
+    } finally {
+      _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setActivityEn(String value) {
+    final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
+        name: '_NewSubEspecieStore.setActivityEn');
+    try {
+      return super.setActivityEn(value);
+    } finally {
+      _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setWhereLive(String value) {
+    final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
+        name: '_NewSubEspecieStore.setWhereLive');
+    try {
+      return super.setWhereLive(value);
+    } finally {
+      _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setWhereLiveEn(String value) {
+    final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
+        name: '_NewSubEspecieStore.setWhereLiveEn');
+    try {
+      return super.setWhereLiveEn(value);
+    } finally {
+      _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void invalidSendPressed() {
     final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
         name: '_NewSubEspecieStore.invalidSendPressed');
@@ -697,6 +801,10 @@ color: ${color},
 colorEn: ${colorEn},
 specieSimilar: ${specieSimilar},
 specieSimilarEn: ${specieSimilarEn},
+activity: ${activity},
+activityEn: ${activityEn},
+whereLive: ${whereLive},
+whereLiveEn: ${whereLiveEn},
 showErrors: ${showErrors},
 error: ${error},
 loading: ${loading},
