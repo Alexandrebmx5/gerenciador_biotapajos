@@ -168,64 +168,63 @@ mixin _$NewSubEspecieStore on _NewSubEspecieStore, Store {
     });
   }
 
-  final _$subspecieAtom = Atom(name: '_NewSubEspecieStore.subspecie');
+  final _$groupAtom = Atom(name: '_NewSubEspecieStore.group');
 
   @override
-  String get subspecie {
-    _$subspecieAtom.reportRead();
-    return super.subspecie;
+  String get group {
+    _$groupAtom.reportRead();
+    return super.group;
   }
 
   @override
-  set subspecie(String value) {
-    _$subspecieAtom.reportWrite(value, super.subspecie, () {
-      super.subspecie = value;
+  set group(String value) {
+    _$groupAtom.reportWrite(value, super.group, () {
+      super.group = value;
     });
   }
 
-  final _$subspecieEnAtom = Atom(name: '_NewSubEspecieStore.subspecieEn');
+  final _$groupEnAtom = Atom(name: '_NewSubEspecieStore.groupEn');
 
   @override
-  String get subspecieEn {
-    _$subspecieEnAtom.reportRead();
-    return super.subspecieEn;
+  String get groupEn {
+    _$groupEnAtom.reportRead();
+    return super.groupEn;
   }
 
   @override
-  set subspecieEn(String value) {
-    _$subspecieEnAtom.reportWrite(value, super.subspecieEn, () {
-      super.subspecieEn = value;
+  set groupEn(String value) {
+    _$groupEnAtom.reportWrite(value, super.groupEn, () {
+      super.groupEn = value;
     });
   }
 
-  final _$scientificNameAtom = Atom(name: '_NewSubEspecieStore.scientificName');
+  final _$familyAtom = Atom(name: '_NewSubEspecieStore.family');
 
   @override
-  String get scientificName {
-    _$scientificNameAtom.reportRead();
-    return super.scientificName;
+  String get family {
+    _$familyAtom.reportRead();
+    return super.family;
   }
 
   @override
-  set scientificName(String value) {
-    _$scientificNameAtom.reportWrite(value, super.scientificName, () {
-      super.scientificName = value;
+  set family(String value) {
+    _$familyAtom.reportWrite(value, super.family, () {
+      super.family = value;
     });
   }
 
-  final _$scientificNameEnAtom =
-      Atom(name: '_NewSubEspecieStore.scientificNameEn');
+  final _$familyEnAtom = Atom(name: '_NewSubEspecieStore.familyEn');
 
   @override
-  String get scientificNameEn {
-    _$scientificNameEnAtom.reportRead();
-    return super.scientificNameEn;
+  String get familyEn {
+    _$familyEnAtom.reportRead();
+    return super.familyEn;
   }
 
   @override
-  set scientificNameEn(String value) {
-    _$scientificNameEnAtom.reportWrite(value, super.scientificNameEn, () {
-      super.scientificNameEn = value;
+  set familyEn(String value) {
+    _$familyEnAtom.reportWrite(value, super.familyEn, () {
+      super.familyEn = value;
     });
   }
 
@@ -319,33 +318,34 @@ mixin _$NewSubEspecieStore on _NewSubEspecieStore, Store {
     });
   }
 
-  final _$activeAtom = Atom(name: '_NewSubEspecieStore.active');
+  final _$specieSimilarAtom = Atom(name: '_NewSubEspecieStore.specieSimilar');
 
   @override
-  String get active {
-    _$activeAtom.reportRead();
-    return super.active;
+  String get specieSimilar {
+    _$specieSimilarAtom.reportRead();
+    return super.specieSimilar;
   }
 
   @override
-  set active(String value) {
-    _$activeAtom.reportWrite(value, super.active, () {
-      super.active = value;
+  set specieSimilar(String value) {
+    _$specieSimilarAtom.reportWrite(value, super.specieSimilar, () {
+      super.specieSimilar = value;
     });
   }
 
-  final _$activeEnAtom = Atom(name: '_NewSubEspecieStore.activeEn');
+  final _$specieSimilarEnAtom =
+      Atom(name: '_NewSubEspecieStore.specieSimilarEn');
 
   @override
-  String get activeEn {
-    _$activeEnAtom.reportRead();
-    return super.activeEn;
+  String get specieSimilarEn {
+    _$specieSimilarEnAtom.reportRead();
+    return super.specieSimilarEn;
   }
 
   @override
-  set activeEn(String value) {
-    _$activeEnAtom.reportWrite(value, super.activeEn, () {
-      super.activeEn = value;
+  set specieSimilarEn(String value) {
+    _$specieSimilarEnAtom.reportWrite(value, super.specieSimilarEn, () {
+      super.specieSimilarEn = value;
     });
   }
 
@@ -530,44 +530,44 @@ mixin _$NewSubEspecieStore on _NewSubEspecieStore, Store {
   }
 
   @override
-  void setSubspecie(String value) {
+  void setGroup(String value) {
     final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
-        name: '_NewSubEspecieStore.setSubspecie');
+        name: '_NewSubEspecieStore.setGroup');
     try {
-      return super.setSubspecie(value);
+      return super.setGroup(value);
     } finally {
       _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setSubspecieEn(String value) {
+  void setGroupEn(String value) {
     final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
-        name: '_NewSubEspecieStore.setSubspecieEn');
+        name: '_NewSubEspecieStore.setGroupEn');
     try {
-      return super.setSubspecieEn(value);
+      return super.setGroupEn(value);
     } finally {
       _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setScientificName(String value) {
+  void setFamily(String value) {
     final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
-        name: '_NewSubEspecieStore.setScientificName');
+        name: '_NewSubEspecieStore.setFamily');
     try {
-      return super.setScientificName(value);
+      return super.setFamily(value);
     } finally {
       _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setScientificNameEn(String value) {
+  void setFamilyEn(String value) {
     final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
-        name: '_NewSubEspecieStore.setScientificNameEn');
+        name: '_NewSubEspecieStore.setFamilyEn');
     try {
-      return super.setScientificNameEn(value);
+      return super.setFamilyEn(value);
     } finally {
       _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
     }
@@ -640,22 +640,22 @@ mixin _$NewSubEspecieStore on _NewSubEspecieStore, Store {
   }
 
   @override
-  void setActive(String value) {
+  void setSpecieSimilar(String value) {
     final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
-        name: '_NewSubEspecieStore.setActive');
+        name: '_NewSubEspecieStore.setSpecieSimilar');
     try {
-      return super.setActive(value);
+      return super.setSpecieSimilar(value);
     } finally {
       _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void setActiveEn(String value) {
+  void setSpecieSimilarEn(String value) {
     final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
-        name: '_NewSubEspecieStore.setActiveEn');
+        name: '_NewSubEspecieStore.setSpecieSimilarEn');
     try {
-      return super.setActiveEn(value);
+      return super.setSpecieSimilarEn(value);
     } finally {
       _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
     }
@@ -685,18 +685,18 @@ youKnow: ${youKnow},
 youKnowEn: ${youKnowEn},
 specie: ${specie},
 specieEn: ${specieEn},
-subspecie: ${subspecie},
-subspecieEn: ${subspecieEn},
-scientificName: ${scientificName},
-scientificNameEn: ${scientificNameEn},
+group: ${group},
+groupEn: ${groupEn},
+family: ${family},
+familyEn: ${familyEn},
 locations: ${locations},
 locationsEn: ${locationsEn},
 howKnow: ${howKnow},
 howKnowEn: ${howKnowEn},
 color: ${color},
 colorEn: ${colorEn},
-active: ${active},
-activeEn: ${activeEn},
+specieSimilar: ${specieSimilar},
+specieSimilarEn: ${specieSimilarEn},
 showErrors: ${showErrors},
 error: ${error},
 loading: ${loading},

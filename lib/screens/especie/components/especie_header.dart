@@ -38,7 +38,7 @@ class EspecieHeader extends StatelessWidget {
               height: 44,
               width: 70,
               child: ElevatedButton(
-                child: Text('Nova categoria de espécie'),
+                child: Text('Novo grupo'),
                 style: ElevatedButton.styleFrom(primary: bgBlue),
                 onPressed: () {
                   showDialog(

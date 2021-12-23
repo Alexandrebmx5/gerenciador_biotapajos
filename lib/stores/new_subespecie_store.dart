@@ -20,18 +20,18 @@ abstract class _NewSubEspecieStore with Store {
     youKnowEn = subEspecie.youKnowEn ?? '';
     specie = subEspecie.specie ?? '';
     specieEn = subEspecie.specieEn ?? '';
-    subspecie = subEspecie.subspecie ?? '';
-    subspecieEn = subEspecie.subspecieEn ?? '';
-    scientificName = subEspecie.scientificName ?? '';
-    scientificNameEn = subEspecie.scientificNameEn ?? '';
+    group = subEspecie.group ?? '';
+    groupEn = subEspecie.groupEn ?? '';
+    family = subEspecie.family ?? '';
+    familyEn = subEspecie.familyEn ?? '';
     locations = subEspecie.locations ?? '';
     locationsEn = subEspecie.locationsEn ?? '';
     howKnow = subEspecie.howKnow ?? '';
     howKnowEn = subEspecie.howKnowEn ?? '';
     color = subEspecie.color ?? '';
     colorEn = subEspecie.colorEn ?? '';
-    active = subEspecie.active ?? '';
-    activeEn = subEspecie.activeEn ?? '';
+    specieSimilar = subEspecie.specieSimilar ?? '';
+    specieSimilarEn = subEspecie.specieSimilarEn ?? '';
   }
 
   final SubEspecie subEspecie;
@@ -101,28 +101,28 @@ abstract class _NewSubEspecieStore with Store {
 
 
   @observable
-  String subspecie = '';
+  String group = '';
 
   @action
-  void setSubspecie(String value) => subspecie = value;
+  void setGroup(String value) => group = value;
 
   @observable
-  String subspecieEn = '';
+  String groupEn = '';
 
   @action
-  void setSubspecieEn(String value) => subspecieEn = value;
+  void setGroupEn(String value) => groupEn = value;
 
   @observable
-  String scientificName = '';
+  String family = '';
 
   @action
-  void setScientificName(String value) => scientificName = value;
+  void setFamily(String value) => family = value;
 
   @observable
-  String scientificNameEn = '';
+  String familyEn = '';
 
   @action
-  void setScientificNameEn(String value) => scientificNameEn = value;
+  void setFamilyEn(String value) => familyEn = value;
 
   @observable
   String locations = '';
@@ -161,16 +161,16 @@ abstract class _NewSubEspecieStore with Store {
   void setColorEn(String value) => colorEn = value;
 
   @observable
-  String active = '';
+  String specieSimilar = '';
 
   @action
-  void setActive(String value) => active = value;
+  void setSpecieSimilar(String value) => specieSimilar = value;
 
   @observable
-  String activeEn = '';
+  String specieSimilarEn = '';
 
   @action
-  void setActiveEn(String value) => activeEn = value;
+  void setSpecieSimilarEn(String value) => specieSimilarEn = value;
 
   @computed
   Function get sendPressed => _send;
@@ -204,18 +204,18 @@ abstract class _NewSubEspecieStore with Store {
     subEspecie.youKnowEn = youKnowEn;
     subEspecie.specie = specie;
     subEspecie.specieEn = specieEn;
-    subEspecie.subspecie = subspecie;
-    subEspecie.subspecieEn = subspecieEn;
-    subEspecie.scientificName = scientificName;
-    subEspecie.scientificNameEn = scientificNameEn;
+    subEspecie.group = group;
+    subEspecie.groupEn = groupEn;
+    subEspecie.family = family;
+    subEspecie.familyEn = familyEn;
     subEspecie.locations = locations;
     subEspecie.locationsEn = locationsEn;
     subEspecie.howKnow = howKnow;
     subEspecie.howKnowEn = howKnowEn;
     subEspecie.color = color;
     subEspecie.colorEn = colorEn;
-    subEspecie.active = active;
-    subEspecie.activeEn = activeEn;
+    subEspecie.specieSimilar = specieSimilar;
+    subEspecie.specieSimilarEn = specieSimilarEn;
 
     loading = true;
       await SubEspecie().save(subEspecie);

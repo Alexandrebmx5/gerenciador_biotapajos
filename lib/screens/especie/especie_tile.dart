@@ -18,7 +18,7 @@ class _EspecieTileState extends State<EspecieTile> {
       if (especies.isEmpty)
         return Center(
             child: Text(
-              'Nenhuma categoria de espécie encontrada!',
+              'Nenhuma grupo de espécie encontrada!',
               style: TextStyle(color: bgColor),
             ));
       return ListView.builder(

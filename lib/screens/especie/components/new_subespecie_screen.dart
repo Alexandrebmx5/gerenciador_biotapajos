@@ -68,8 +68,8 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
 
     final _fieldStyle = TextStyle(color: Colors.black, fontSize: 16);
 
-    store.setSpecie(widget.especie.pt);
-    store.setSpecieEn(widget.especie.en);
+    store.setGroup(widget.especie.pt);
+    store.setGroupEn(widget.especie.en);
 
     return Scaffold(
         backgroundColor: secondaryColor,
@@ -264,7 +264,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               enabled: false,
                               initialValue: widget.especie.pt ?? '',
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Espécie'),
+                              decoration: _buildDecoration('Grupo'),
                               //validator: validateTitle,
                             ),
                           );
@@ -282,7 +282,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               enabled: false,
                               initialValue: widget.especie.en ?? '',
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Espécie em inglês'),
+                              decoration: _buildDecoration('Grupo em inglês'),
                               //validator: validateTitle,
                             ),
                           );
@@ -297,10 +297,10 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey[100]),
                             child: TextFormField(
-                              initialValue: store.subspecie ?? '',
-                              onChanged: store.setSubspecie,
+                              initialValue: store.specie ?? '',
+                              onChanged: store.setSpecie,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Sub Espécie'),
+                              decoration: _buildDecoration('Espécie'),
                               //validator: validateTitle,
                             ),
                           );
@@ -315,11 +315,11 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey[100]),
                             child: TextFormField(
-                              initialValue: store.subspecieEn ?? '',
-                              onChanged: store.setSubspecieEn,
+                              initialValue: store.specieEn ?? '',
+                              onChanged: store.setSpecieEn,
                               style: _fieldStyle,
                               decoration:
-                                  _buildDecoration('Sub Espécie em inglês'),
+                                  _buildDecoration('Espécie em inglês'),
                               //validator: validateTitle,
                             ),
                           );
@@ -338,10 +338,10 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey[100]),
                             child: TextFormField(
-                              initialValue: store.scientificName ?? '',
-                              onChanged: store.setScientificName,
+                              initialValue: store.family ?? '',
+                              onChanged: store.setFamily,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Nome científico'),
+                              decoration: _buildDecoration('Família'),
                               //validator: validateTitle,
                             ),
                           );
@@ -356,11 +356,11 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey[100]),
                             child: TextFormField(
-                              initialValue: store.scientificNameEn ?? '',
-                              onChanged: store.setScientificNameEn,
+                              initialValue: store.familyEn ?? '',
+                              onChanged: store.setFamilyEn,
                               style: _fieldStyle,
                               decoration:
-                                  _buildDecoration('Nome científico em inglês'),
+                                  _buildDecoration('Família em inglês'),
                               //validator: validateTitle,
                             ),
                           );
@@ -378,7 +378,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               initialValue: store.locations ?? '',
                               onChanged: store.setLocations,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Localização'),
+                              decoration: _buildDecoration('Distribuição'),
                               //validator: validateTitle,
                             ),
                           );
@@ -397,7 +397,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               onChanged: store.setLocationsEn,
                               style: _fieldStyle,
                               decoration:
-                                  _buildDecoration('Localização em inglês'),
+                                  _buildDecoration('Distribuição em inglês'),
                               //validator: validateTitle,
                             ),
                           );
@@ -494,10 +494,10 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey[100]),
                             child: TextFormField(
-                              initialValue: store.active ?? '',
-                              onChanged: store.setActive,
+                              initialValue: store.specieSimilar ?? '',
+                              onChanged: store.setSpecieSimilar,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Ativa'),
+                              decoration: _buildDecoration('Espécie similar'),
                               //validator: validateTitle,
                             ),
                           );
@@ -513,10 +513,10 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey[100]),
                             child: TextFormField(
-                              initialValue: store.activeEn ?? '',
-                              onChanged: store.setActiveEn,
+                              initialValue: store.specieSimilarEn ?? '',
+                              onChanged: store.setSpecieSimilarEn,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Ativa em inglês'),
+                              decoration: _buildDecoration('Espécie similar em inglês'),
                               //validator: validateTitle,
                             ),
                           );
@@ -668,7 +668,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                             child: TextFormField(
                               initialValue: widget.especie.pt ?? '',
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Espécie'),
+                              decoration: _buildDecoration('Grupo'),
                               //validator: validateTitle,
                             ),
                           );
@@ -685,7 +685,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                             child: TextFormField(
                               initialValue: widget.especie.en ?? '',
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Espécie em inglês'),
+                              decoration: _buildDecoration('Grupo em inglês'),
                               //validator: validateTitle,
                             ),
                           );
@@ -700,10 +700,10 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey[100]),
                             child: TextFormField(
-                              initialValue: store.subspecie ?? '',
-                              onChanged: store.setSubspecie,
+                              initialValue: store.specie ?? '',
+                              onChanged: store.setSpecie,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Sub Espécie'),
+                              decoration: _buildDecoration('Espécie'),
                               //validator: validateTitle,
                             ),
                           );
@@ -718,48 +718,48 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey[100]),
                             child: TextFormField(
-                              initialValue: store.subspecieEn ?? '',
-                              onChanged: store.setSubspecieEn,
-                              style: _fieldStyle,
-                              decoration:
-                                  _buildDecoration('Sub Espécie em inglês'),
-                              //validator: validateTitle,
-                            ),
-                          );
-                        }),
-                        Observer(builder: (_) {
-                          return Container(
-                            margin: EdgeInsets.only(left: 16, top: 16),
-                            width: MediaQuery.of(context).size.width * 0.2,
-                            height: 50,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey[300]),
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.grey[100]),
-                            child: TextFormField(
-                              initialValue: store.scientificName ?? '',
-                              onChanged: store.setScientificName,
-                              style: _fieldStyle,
-                              decoration: _buildDecoration('Nome científico'),
-                              //validator: validateTitle,
-                            ),
-                          );
-                        }),
-                        Observer(builder: (_) {
-                          return Container(
-                            margin: EdgeInsets.only(left: 16, top: 16),
-                            width: MediaQuery.of(context).size.width * 0.2,
-                            height: 50,
-                            decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey[300]),
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.grey[100]),
-                            child: TextFormField(
-                              initialValue: store.scientificNameEn ?? '',
-                              onChanged: store.setScientificNameEn,
+                              initialValue: store.specieEn ?? '',
+                              onChanged: store.setSpecieEn,
                               style: _fieldStyle,
                               decoration:
-                                  _buildDecoration('Nome científico em inglês'),
+                                  _buildDecoration('Espécie em inglês'),
+                              //validator: validateTitle,
+                            ),
+                          );
+                        }),
+                        Observer(builder: (_) {
+                          return Container(
+                            margin: EdgeInsets.only(left: 16, top: 16),
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey[300]),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[100]),
+                            child: TextFormField(
+                              initialValue: store.family ?? '',
+                              onChanged: store.setFamily,
+                              style: _fieldStyle,
+                              decoration: _buildDecoration('Família'),
+                              //validator: validateTitle,
+                            ),
+                          );
+                        }),
+                        Observer(builder: (_) {
+                          return Container(
+                            margin: EdgeInsets.only(left: 16, top: 16),
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey[300]),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[100]),
+                            child: TextFormField(
+                              initialValue: store.familyEn ?? '',
+                              onChanged: store.setFamilyEn,
+                              style: _fieldStyle,
+                              decoration:
+                                  _buildDecoration('Família em inglês'),
                               //validator: validateTitle,
                             ),
                           );
@@ -777,7 +777,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               initialValue: store.locations ?? '',
                               onChanged: store.setLocations,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Localização'),
+                              decoration: _buildDecoration('Distribuição'),
                               //validator: validateTitle,
                             ),
                           );
@@ -796,7 +796,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               onChanged: store.setLocationsEn,
                               style: _fieldStyle,
                               decoration:
-                                  _buildDecoration('Localização em inglês'),
+                                  _buildDecoration('Distribuição em inglês'),
                               //validator: validateTitle,
                             ),
                           );
@@ -885,10 +885,10 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey[100]),
                             child: TextFormField(
-                              initialValue: store.active ?? '',
-                              onChanged: store.setActive,
+                              initialValue: store.specieSimilar ?? '',
+                              onChanged: store.setSpecieSimilar,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Ativa'),
+                              decoration: _buildDecoration('Espécie similar'),
                               //validator: validateTitle,
                             ),
                           );
@@ -904,10 +904,10 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.grey[100]),
                             child: TextFormField(
-                              initialValue: store.activeEn ?? '',
-                              onChanged: store.setActiveEn,
+                              initialValue: store.specieSimilarEn ?? '',
+                              onChanged: store.setSpecieSimilarEn,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Ativa em inglês'),
+                              decoration: _buildDecoration('Espécie similar em inglês'),
                               //validator: validateTitle,
                             ),
                           );

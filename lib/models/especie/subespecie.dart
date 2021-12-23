@@ -7,8 +7,8 @@ import 'package:flutter/cupertino.dart';
 class SubEspecie {
 
   String id;
-  String active;
-  String activeEn;
+  String specieSimilar;
+  String specieSimilarEn;
   String color;
   String colorEn;
   String howKnow;
@@ -20,21 +20,21 @@ class SubEspecie {
   String nomeEn;
   String reproduction;
   String reproductionEn;
-  String scientificName;
-  String scientificNameEn;
+  String family;
+  String familyEn;
   var sound;
   String soundName;
+  String group;
+  String groupEn;
   String specie;
   String specieEn;
-  String subspecie;
-  String subspecieEn;
   String youKnow;
   String youKnowEn;
 
   SubEspecie(
       {this.id,
-      this.active,
-      this.activeEn,
+      this.specieSimilar,
+      this.specieSimilarEn,
       this.color,
       this.colorEn,
       this.howKnow,
@@ -46,21 +46,21 @@ class SubEspecie {
       this.nomeEn,
       this.reproduction,
       this.reproductionEn,
-      this.scientificName,
-      this.scientificNameEn,
+      this.family,
+      this.familyEn,
       this.sound,
       this.soundName,
+      this.group,
+      this.groupEn,
       this.specie,
       this.specieEn,
-      this.subspecie,
-      this.subspecieEn,
       this.youKnow,
       this.youKnowEn});
 
   SubEspecie.fromDocument(DocumentSnapshot doc){
     id = doc.id;
-    active = doc.get('active');
-    activeEn = doc.get('active_en');
+    specieSimilar = doc.get('specie_similar');
+    specieSimilarEn = doc.get('specie_similar_en');
     color = doc.get('color');
     colorEn = doc.get('color_en');
     howKnow = doc.get('howKnow');
@@ -72,13 +72,13 @@ class SubEspecie {
     nomeEn = doc.get('nome_en');
     reproduction = doc.get('reproduction');
     reproductionEn = doc.get('reproduction_en');
-    scientificName = doc.get('scientificName');
-    scientificNameEn = doc.get('scientificName_en');
+    family = doc.get('family');
+    familyEn = doc.get('family_en');
     sound = doc.get('sound');
+    group = doc.get('group');
+    groupEn = doc.get('group_en');
     specie = doc.get('specie');
     specieEn = doc.get('specie_en');
-    subspecie = doc.get('subspecie');
-    subspecieEn = doc.get('subspecie_en');
     youKnow = doc.get('youKnow');
     youKnowEn = doc.get('youKnow');
   }
@@ -92,8 +92,8 @@ class SubEspecie {
 
   Future<void> save(SubEspecie subEspecie) async {
     Map<String, dynamic> data = {
-      'active': subEspecie.active,
-      'active_en': subEspecie.activeEn,
+      'specie_similar': subEspecie.specieSimilar,
+      'specie_similar_en': subEspecie.specieSimilarEn,
       'color': subEspecie.color,
       'color_en': subEspecie.colorEn,
       'howKnow': subEspecie.howKnow,
@@ -104,12 +104,12 @@ class SubEspecie {
       'nome_en': subEspecie.nomeEn,
       'reproduction': subEspecie.reproduction,
       'reproduction_en': subEspecie.reproductionEn,
-      'scientificName': subEspecie.scientificName,
-      'scientificName_en': subEspecie.scientificNameEn,
+      'family': subEspecie.family,
+      'family_en': subEspecie.familyEn,
       'specie': subEspecie.specie,
       'specie_en': subEspecie.specieEn,
-      'subspecie': subEspecie.subspecie,
-      'subspecie_en': subEspecie.subspecieEn,
+      'group': subEspecie.group,
+      'group_en': subEspecie.groupEn,
       'youKnow': subEspecie.youKnow,
       'youKnow_en': subEspecie.youKnowEn,
       if(subEspecie.img.isEmpty) 'img': [],
@@ -119,7 +119,7 @@ class SubEspecie {
     if(subEspecie.id == null){
 
       final doc = await firestore.collection('species')
-          .doc(subEspecie.specie.toLowerCase())
+          .doc(subEspecie.group.toLowerCase())
           .collection('subspecies')
           .add(data);
 
@@ -151,7 +151,7 @@ class SubEspecie {
 
         DocumentReference firestoreRef =
         firestore.collection('species')
-            .doc(subEspecie.specie.toLowerCase())
+            .doc(subEspecie.group.toLowerCase())
             .collection('subspecies')
             .doc(doc.id);
 
@@ -209,7 +209,7 @@ class SubEspecie {
 
       DocumentReference firestoreRef =
       firestore.collection('species')
-          .doc(subEspecie.specie.toLowerCase())
+          .doc(subEspecie.group.toLowerCase())
           .collection('subspecies')
           .doc(subEspecie.id);
 
@@ -224,7 +224,7 @@ class SubEspecie {
     try {
       DocumentReference ref = firestore
           .collection('species')
-          .doc(subEspecie.specie.toLowerCase())
+          .doc(subEspecie.group.toLowerCase())
           .collection('subspecies')
           .doc(subEspecie.id);
 
@@ -236,6 +236,6 @@ class SubEspecie {
 
   @override
   String toString() {
-    return 'SubEspecie{id: $id, active: $active, activeEn: $activeEn, color: $color, colorEn: $colorEn, howKnow: $howKnow, howKnowEn: $howKnowEn, img: $img, locations: $locations, locationsEn: $locationsEn, nome: $nome, nomeEn: $nomeEn, reproduction: $reproduction, reproductionEn: $reproductionEn, scientificName: $scientificName, scientificNameEn: $scientificNameEn, sound: $sound, specie: $specie, specieEn: $specieEn, subspecie: $subspecie, subspecieEn: $subspecieEn, youKnow: $youKnow, youKnowEn: $youKnowEn}';
+    return 'SubEspecie{id: $id, specieSimilar: $specieSimilar, specieSimilarEn: $specieSimilarEn, color: $color, colorEn: $colorEn, howKnow: $howKnow, howKnowEn: $howKnowEn, img: $img, locations: $locations, locationsEn: $locationsEn, nome: $nome, nomeEn: $nomeEn, reproduction: $reproduction, reproductionEn: $reproductionEn, family: $family, familyEn: $familyEn, sound: $sound, soundName: $soundName, group: $group, groupEn: $groupEn, specie: $specie, specieEn: $specieEn, youKnow: $youKnow, youKnowEn: $youKnowEn}';
   }
 }
