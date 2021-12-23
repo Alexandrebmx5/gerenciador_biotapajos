@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:gerenciador_aquifero/common/constants.dart';
+import 'package:gerenciador_aquifero/models/about_me/about_me_historic.dart';
 import 'package:gerenciador_aquifero/screens/about_me/components/image_filed_about.dart';
+import 'package:gerenciador_aquifero/stores/about_me_store.dart';
 import 'package:gerenciador_aquifero/stores/edit_about_me_store.dart';
 import 'package:mobx/mobx.dart';
 
 class EditAboutMeScreen extends StatefulWidget {
+  EditAboutMeScreen(this.aboutMeHistoric);
+
+  final AboutMeHistoric aboutMeHistoric;
 
   @override
-  _EditAboutMeScreenState createState() => _EditAboutMeScreenState();
+  _EditAboutMeScreenState createState() => _EditAboutMeScreenState(aboutMeHistoric);
 }
 
 class _EditAboutMeScreenState extends State<EditAboutMeScreen> {
 
-  EditAboutMeStore store = EditAboutMeStore();
+  _EditAboutMeScreenState(AboutMeHistoric aboutMeHistoric)
+      : editing = aboutMeHistoric != null,
+        store = EditAboutMeStore(aboutMeHistoric: aboutMeHistoric);
+
+  bool editing;
+
+  final EditAboutMeStore store;
 
   @override
   void initState() {

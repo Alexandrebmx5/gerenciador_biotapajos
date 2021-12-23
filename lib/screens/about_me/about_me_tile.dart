@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciador_aquifero/common/constants.dart';
 import 'package:gerenciador_aquifero/screens/about_me/components/edit_about_me_screen.dart';
+import 'package:gerenciador_aquifero/stores/about_me_store.dart';
 
 class AboutMeTile extends StatefulWidget {
   @override
@@ -8,6 +9,9 @@ class AboutMeTile extends StatefulWidget {
 }
 
 class _AboutMeTileState extends State<AboutMeTile> {
+
+  final AboutMeStore aboutMeStore = AboutMeStore();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,7 +23,7 @@ class _AboutMeTileState extends State<AboutMeTile> {
             color: Colors.white,
             child: ListTile(
               onTap: (){
-                Navigator.of(context).push(MaterialPageRoute(builder: (_)=>EditAboutMeScreen()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (_)=>EditAboutMeScreen(aboutMeStore.aboutMeHistoric)));
               },
               title: Text('Nossa Historia e conheça o IAA', style: TextStyle(color: bgColor)),
               trailing: Icon(Icons.arrow_forward_ios, color: bgColor),

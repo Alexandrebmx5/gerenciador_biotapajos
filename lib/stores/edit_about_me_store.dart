@@ -1,6 +1,4 @@
 import 'package:gerenciador_aquifero/models/about_me/about_me_historic.dart';
-import 'package:gerenciador_aquifero/stores/about_me_store.dart';
-import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 
 part 'edit_about_me_store.g.dart';
@@ -9,9 +7,7 @@ class EditAboutMeStore = _EditAboutMeStore with _$EditAboutMeStore;
 
 abstract class _EditAboutMeStore with Store {
 
-  _EditAboutMeStore(){
-
-    aboutMeHistoric = aboutMeStore.aboutMeHistoric;
+  _EditAboutMeStore({this.aboutMeHistoric}){
 
     if(aboutMeHistoric.iaaLogo != null)
       iaaLogo = aboutMeHistoric.iaaLogo.asObservable();
@@ -22,8 +18,6 @@ abstract class _EditAboutMeStore with Store {
   }
 
   AboutMeHistoric aboutMeHistoric;
-
-  final AboutMeStore aboutMeStore = GetIt.I<AboutMeStore>();
 
   ObservableList iaaLogo = ObservableList();
 

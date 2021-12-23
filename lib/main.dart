@@ -7,7 +7,6 @@ import 'package:gerenciador_aquifero/common/constants.dart';
 import 'package:gerenciador_aquifero/controllers/MenuController.dart';
 import 'package:gerenciador_aquifero/models/especie/especie_manager.dart';
 import 'package:gerenciador_aquifero/screens/login/login_screen.dart';
-import 'package:gerenciador_aquifero/stores/about_me_store.dart';
 import 'package:gerenciador_aquifero/stores/page_store.dart';
 import 'package:gerenciador_aquifero/stores/user_manager_store.dart';
 import 'package:get_it/get_it.dart';
@@ -26,7 +25,6 @@ final location = GetIt.instance;
 void setupLocation() {
   location.registerSingleton(UserManagerStore());
   location.registerSingleton(PageStore());
-  location.registerSingleton(AboutMeStore());
 }
 
 class MyApp extends StatelessWidget {
