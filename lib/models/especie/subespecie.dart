@@ -100,7 +100,7 @@ class SubEspecie {
   final FirebaseStorage storage = FirebaseStorage.instance;
 
   Reference get storageRef =>
-      storage.ref('gs://appbiotapajos-3d160.appspot.com');
+      storage.ref('gs://appbiotapajos-3d160.appspot.com/species');
 
   Future<void> save(SubEspecie subEspecie) async {
     Map<String, dynamic> data = {
@@ -143,12 +143,11 @@ class SubEspecie {
 
       final List<String> uploadImage = [];
 
-      final filePath = '${subEspecie.nome.toLowerCase()}.png';
+      final filePath = '${subEspecie.group.toLowerCase()}.png';
 
       for (final image in subEspecie.img) {
         if (image as Uint8List != null) {
-          final UploadTask task = storageRef.child(subEspecie.specie).child(
-              filePath).putData(image);
+          final UploadTask task = storageRef.child(filePath).putData(image);
           final TaskSnapshot snapshot = await task;
           final String url = await snapshot.ref.getDownloadURL();
           uploadImage.add(url);
@@ -177,7 +176,7 @@ class SubEspecie {
     } else {
       final List<String> uploadImage = [];
 
-      final filePath = 'temp/${DateTime.now()}.png';
+      final filePath = '${subEspecie.group.toLowerCase()}.png';
 
       for (final image in subEspecie.img) {
         if (image is Uint8List) {
