@@ -134,7 +134,7 @@ class SideMenu extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      'v. 1.0.1',
+                      'v. 1.0.2',
                       style: TextStyle(
                           color: Colors.black,
                           fontFamily: 'Pricipal',
