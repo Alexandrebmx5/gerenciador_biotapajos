@@ -223,7 +223,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               expands: false,
                               maxLines: 6,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Você sabe?'),
+                              decoration: _buildDecoration('Você sabia?'),
                               //validator: validateTitle,
                             ),
                           );
@@ -243,7 +243,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               maxLines: 6,
                               style: _fieldStyle,
                               decoration:
-                                  _buildDecoration('Você sabe em inglês'),
+                                  _buildDecoration('Você sabia em inglês'),
                               //validator: validateTitle,
                             ),
                           );
@@ -712,7 +712,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               expands: false,
                               maxLines: 6,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Você sabe?'),
+                              decoration: _buildDecoration('Você sabia?'),
                               //validator: validateTitle,
                             ),
                           );
@@ -732,7 +732,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               maxLines: 6,
                               style: _fieldStyle,
                               decoration:
-                                  _buildDecoration('Você sabe em inglês'),
+                                  _buildDecoration('Você sabia em inglês'),
                               //validator: validateTitle,
                             ),
                           );

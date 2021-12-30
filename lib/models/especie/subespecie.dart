@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:uuid/uuid.dart';
 
 class SubEspecie {
 
@@ -100,7 +101,7 @@ class SubEspecie {
   final FirebaseStorage storage = FirebaseStorage.instance;
 
   Reference get storageRef =>
-      storage.ref('gs://appbiotapajos-3d160.appspot.com/species');
+      storage.ref('gs://appbiotapajos-3d160.appspot.com/species/');
 
   Future<void> save(SubEspecie subEspecie) async {
     Map<String, dynamic> data = {
@@ -142,15 +143,16 @@ class SubEspecie {
 
       final List<String> uploadImage = [];
 
-      final filePath = '${subEspecie.group.toLowerCase()}.png';
-
       for (final image in subEspecie.img) {
         if (image as Uint8List != null) {
+          final filePath = '${Uuid().v4()}.png';
           final UploadTask task = storageRef.child(filePath).putData(image);
           final TaskSnapshot snapshot = await task;
           final String url = await snapshot.ref.getDownloadURL();
           uploadImage.add(url);
         }
+
+        print(uploadImage);
       }
 
         // sound
@@ -175,10 +177,9 @@ class SubEspecie {
     } else {
       final List<String> uploadImage = [];
 
-      final filePath = '${subEspecie.group.toLowerCase()}.png';
-
       for (final image in subEspecie.img) {
         if (image is Uint8List) {
+          final filePath = '${Uuid().v4()}.png';
           final UploadTask task = storageRef.child(filePath).putData(image);
           final TaskSnapshot snapshot = await task;
           final String url = await snapshot.ref.getDownloadURL();
