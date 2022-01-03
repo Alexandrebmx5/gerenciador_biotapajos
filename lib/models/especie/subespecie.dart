@@ -89,7 +89,7 @@ class SubEspecie {
     specie = doc.get('specie');
     specieEn = doc.get('specie_en');
     youKnow = doc.get('youKnow');
-    youKnowEn = doc.get('youKnow');
+    youKnowEn = doc.get('youKnow_en');
     activity = doc.get('activity');
     activityEn = doc.get('activity_en');
     whereLive = doc.get('where_live');
