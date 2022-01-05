@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:gerenciador_aquifero/common/constants.dart';
 import 'package:gerenciador_aquifero/models/about_me/about_me_historic.dart';
-import 'package:gerenciador_aquifero/screens/about_me/components/image_filed_about.dart';
+import 'package:gerenciador_aquifero/screens/about_me/components/edit_about/image_filed_about.dart';
 import 'package:gerenciador_aquifero/stores/about_me_store.dart';
 import 'package:gerenciador_aquifero/stores/edit_about_me_store.dart';
 import 'package:mobx/mobx.dart';

@@ -9,14 +9,11 @@ class EditPartnerInstitutionsStore = _EditPartnerInstitutionsStore with _$EditPa
 
 abstract class _EditPartnerInstitutionsStore with Store {
 
-  _EditPartnerInstitutionsStore(){
-    partnerInstitutions = aboutMeStore.partnerInstitutions;
+  _EditPartnerInstitutionsStore({this.partnerInstitutions}){
     img = partnerInstitutions.img.asObservable();
   }
 
-  PartnerInstitutions partnerInstitutions;
-
-  final AboutMeStore aboutMeStore = GetIt.I<AboutMeStore>();
+  final PartnerInstitutions partnerInstitutions;
 
   ObservableList img = ObservableList();
 

@@ -20,16 +20,29 @@ class Team {
 
     Map<String, dynamic> data = {
       'name': team.name,
-      'description_en': descriptionEn,
-      'description_pt': descriptionPt
+      'description_en': team.descriptionEn,
+      'description_pt': team.descriptionPt
     };
 
     try {
-      DocumentReference ref =
-      FirebaseFirestore.instance.collection('name_team').doc(team.id);
-      await ref.update(data);
+      if(team.id == null) {
+        await FirebaseFirestore.instance.collection('name_team').add(data);
+      } else {
+        DocumentReference ref = FirebaseFirestore.instance.collection('name_team').doc(team.id);
+        await ref.update(data);
+      }
     } catch (e){
       Future.error('Error ao salvar time');
+    }
+  }
+
+  Future<void> delete(Team team) async {
+    try {
+      DocumentReference ref =
+      FirebaseFirestore.instance.collection('name_team').doc(team.id);
+      await ref.delete();
+    } catch (e){
+      Future.error('Error ao deletar');
     }
   }
 

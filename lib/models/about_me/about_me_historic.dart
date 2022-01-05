@@ -44,10 +44,9 @@ class AboutMeHistoric {
 
     final List<String> uploadImage = [];
 
-    final filePath = '${DateTime.now()}.png';
-
     for (final image in aboutMeHistoric.iaaLogo) {
       if (image is Uint8List) {
+        final filePath = '${DateTime.now()}.png';
         final UploadTask task = storageRef.child(filePath).putData(image);
         final TaskSnapshot snapshot = await task;
         final String url = await snapshot.ref.getDownloadURL();

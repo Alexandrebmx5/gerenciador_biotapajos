@@ -1,4 +1,4 @@
-import 'package:gerenciador_aquifero/models/about_me/collaborators.dart';
+import 'package:gerenciador_aquifero/models/about_me/collaborators/collaborators.dart';
 import 'package:mobx/mobx.dart';
 
 part 'edit_collaborators_store.g.dart';

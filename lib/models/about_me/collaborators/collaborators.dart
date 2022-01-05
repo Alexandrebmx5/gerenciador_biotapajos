@@ -24,11 +24,26 @@ class Collaborators {
     };
 
     try {
-      DocumentReference ref =
-      FirebaseFirestore.instance.collection('collaborators').doc(collaborators.id);
-      await ref.update(data);
+      if(collaborators.id == null){
+        await FirebaseFirestore.instance.collection('collaborators').add(data);
+      } else {
+        DocumentReference ref =
+        FirebaseFirestore.instance.collection('collaborators').doc(
+            collaborators.id);
+        await ref.update(data);
+      }
     } catch (e){
       Future.error('Error ao salvar colaboradores');
+    }
+  }
+
+  Future<void> delete(Collaborators collaborators) async {
+    try {
+      DocumentReference ref =
+      FirebaseFirestore.instance.collection('collaborators').doc(collaborators.id);
+      await ref.delete();
+    } catch (e){
+      Future.error('Error ao deletar');
     }
   }
 

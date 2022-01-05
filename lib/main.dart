@@ -5,6 +5,8 @@ import 'package:gerenciador_aquifero/blocs/suggestions_bloc.dart';
 import 'package:gerenciador_aquifero/blocs/user_bloc.dart';
 import 'package:gerenciador_aquifero/common/constants.dart';
 import 'package:gerenciador_aquifero/controllers/MenuController.dart';
+import 'package:gerenciador_aquifero/models/about_me/collaborators/collaborators_manager.dart';
+import 'package:gerenciador_aquifero/models/about_me/team/team_manager.dart';
 import 'package:gerenciador_aquifero/models/especie/especie_manager.dart';
 import 'package:gerenciador_aquifero/screens/login/login_screen.dart';
 import 'package:gerenciador_aquifero/stores/page_store.dart';
@@ -45,6 +47,16 @@ class MyApp extends StatelessWidget {
             lazy: true,
             create: (_) => EspecieManager(),
             update: (_, especieManager) => especieManager..update(),
+          ),
+          ChangeNotifierProxyProvider0<TeamManager>(
+            lazy: false,
+            create: (_) => TeamManager(),
+            update: (_, teamManager) => teamManager..update(),
+          ),
+          ChangeNotifierProxyProvider0<CollaboratorsManager>(
+            lazy: false,
+            create: (_) => CollaboratorsManager(),
+            update: (_, collaboratorsManager) => collaboratorsManager..update(),
           ),
         ],
         child: MaterialApp(

@@ -1,4 +1,4 @@
-import 'package:gerenciador_aquifero/models/about_me/team.dart';
+import 'package:gerenciador_aquifero/models/about_me/team/team.dart';
 import 'package:mobx/mobx.dart';
 
 
@@ -17,7 +17,7 @@ abstract class _EditTeamStore with Store {
   Team team;
 
   @observable
-  String name = '';
+  String name;
 
   @action
   void setNome(String value) => name = value;
@@ -34,7 +34,7 @@ abstract class _EditTeamStore with Store {
   }
 
   @observable
-  String descriptionPt = '';
+  String descriptionPt;
 
   @action
   void setDescriptionPt(String value) => descriptionPt = value;
@@ -51,7 +51,7 @@ abstract class _EditTeamStore with Store {
   }
 
   @observable
-  String descriptionEn = '';
+  String descriptionEn;
 
   @action
   void setDescriptionEn(String value) => descriptionEn = value;

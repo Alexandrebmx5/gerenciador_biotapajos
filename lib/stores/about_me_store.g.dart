@@ -24,36 +24,6 @@ mixin _$AboutMeStore on _AboutMeStore, Store {
     });
   }
 
-  final _$teamAtom = Atom(name: '_AboutMeStore.team');
-
-  @override
-  List<Team> get team {
-    _$teamAtom.reportRead();
-    return super.team;
-  }
-
-  @override
-  set team(List<Team> value) {
-    _$teamAtom.reportWrite(value, super.team, () {
-      super.team = value;
-    });
-  }
-
-  final _$collaboratorsAtom = Atom(name: '_AboutMeStore.collaborators');
-
-  @override
-  List<Collaborators> get collaborators {
-    _$collaboratorsAtom.reportRead();
-    return super.collaborators;
-  }
-
-  @override
-  set collaborators(List<Collaborators> value) {
-    _$collaboratorsAtom.reportWrite(value, super.collaborators, () {
-      super.collaborators = value;
-    });
-  }
-
   final _$partnerInstitutionsAtom =
       Atom(name: '_AboutMeStore.partnerInstitutions');
 
@@ -89,8 +59,6 @@ mixin _$AboutMeStore on _AboutMeStore, Store {
   String toString() {
     return '''
 aboutMeHistoric: ${aboutMeHistoric},
-team: ${team},
-collaborators: ${collaborators},
 partnerInstitutions: ${partnerInstitutions},
 loading: ${loading}
     ''';

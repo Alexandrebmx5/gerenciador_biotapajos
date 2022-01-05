@@ -23,10 +23,9 @@ class PartnerInstitutions {
     try {
       final List<String> uploadImage = [];
 
-      final filePath = '${DateTime.now()}.png';
-
       for (final image in partnerInstitutions.img) {
         if (image is Uint8List) {
+          final filePath = '${DateTime.now()}.png';
           final UploadTask task = storageRef.child(filePath).putData(image);
           final TaskSnapshot snapshot = await task;
           final String url = await snapshot.ref.getDownloadURL();
@@ -51,7 +50,7 @@ class PartnerInstitutions {
       firestore.collection('partner_institutions').doc('gB4TTNA4N1JUkfuAJPf8');
 
       await firestoreRef.update({
-        'img': uploadImage,
+        'logo': uploadImage,
       });
       partnerInstitutions.img = uploadImage;
     } catch (e){
@@ -61,6 +60,6 @@ class PartnerInstitutions {
 
   @override
   String toString() {
-    return 'PartnerInstitutions{id: $id, img: $img}';
+    return 'PartnerInstitutions{id: $id, logo: $img}';
   }
 }
