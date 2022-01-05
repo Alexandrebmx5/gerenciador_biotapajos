@@ -8,6 +8,7 @@ import 'package:gerenciador_aquifero/controllers/MenuController.dart';
 import 'package:gerenciador_aquifero/models/about_me/collaborators/collaborators_manager.dart';
 import 'package:gerenciador_aquifero/models/about_me/team/team_manager.dart';
 import 'package:gerenciador_aquifero/models/especie/especie_manager.dart';
+import 'package:gerenciador_aquifero/models/ucs_trails/ucs_manager.dart';
 import 'package:gerenciador_aquifero/screens/login/login_screen.dart';
 import 'package:gerenciador_aquifero/stores/page_store.dart';
 import 'package:gerenciador_aquifero/stores/user_manager_store.dart';
@@ -57,6 +58,11 @@ class MyApp extends StatelessWidget {
             lazy: false,
             create: (_) => CollaboratorsManager(),
             update: (_, collaboratorsManager) => collaboratorsManager..update(),
+          ),
+          ChangeNotifierProxyProvider0<UcsManager>(
+            lazy: false,
+            create: (_) => UcsManager(),
+            update: (_, ucsManager) => ucsManager..update(),
           ),
         ],
         child: MaterialApp(

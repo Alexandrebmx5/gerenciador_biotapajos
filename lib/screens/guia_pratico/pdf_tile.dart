@@ -3,6 +3,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:gerenciador_aquifero/common/constants.dart';
 import 'package:gerenciador_aquifero/models/pdf/pdfFiles.dart';
+import 'package:gerenciador_aquifero/screens/guia_pratico/components/add_pdf.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class PdfTile extends StatefulWidget {
@@ -29,7 +30,26 @@ class _PdfTileState extends State<PdfTile> {
 
   @override
   Widget build(BuildContext context) {
-    return body();
+    return Scaffold(
+      backgroundColor: Colors.white,
+        appBar: AppBar(
+            backgroundColor: primaryColor,
+            title: Text('Trilhas ecológicas'),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.all(defaultPadding),
+                child: ElevatedButton(
+                  child: Text('Novo'),
+                  style: ElevatedButton.styleFrom(primary: bgBlue),
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) => AddPdf());
+                  },
+                ),
+              ),
+            ]),
+        body: body());
   }
 
   Widget body() {

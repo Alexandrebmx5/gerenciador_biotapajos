@@ -24,29 +24,12 @@ class PdfHeader extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(left: defaultPadding),
               child: Text(
-                "Guia Práticos",
+                "Conheça as Ucs e Trilhas ecológicas",
                 style: Theme.of(context).textTheme.headline6,
               ),
             ),
           if (!Responsive.isMobile(context))
             Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
-          Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(defaultPadding),
-                child: SizedBox(
-                  height: 44,
-                  width: 70,
-                  child: ElevatedButton(
-                    child: Text('Adicionar'),
-                    style: ElevatedButton.styleFrom(primary: bgBlue),
-                    onPressed: () {
-                      showDialog(
-                          context: context,
-                          builder: (context) => AddPdf());
-                    },
-                  ),
-                ),
-              )),
         ],
       ),
     );
