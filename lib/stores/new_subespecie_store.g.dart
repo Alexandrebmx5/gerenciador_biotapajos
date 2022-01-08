@@ -409,6 +409,66 @@ mixin _$NewSubEspecieStore on _NewSubEspecieStore, Store {
     });
   }
 
+  final _$venomAtom = Atom(name: '_NewSubEspecieStore.venom');
+
+  @override
+  String get venom {
+    _$venomAtom.reportRead();
+    return super.venom;
+  }
+
+  @override
+  set venom(String value) {
+    _$venomAtom.reportWrite(value, super.venom, () {
+      super.venom = value;
+    });
+  }
+
+  final _$venomEnAtom = Atom(name: '_NewSubEspecieStore.venomEn');
+
+  @override
+  String get venomEn {
+    _$venomEnAtom.reportRead();
+    return super.venomEn;
+  }
+
+  @override
+  set venomEn(String value) {
+    _$venomEnAtom.reportWrite(value, super.venomEn, () {
+      super.venomEn = value;
+    });
+  }
+
+  final _$dietAtom = Atom(name: '_NewSubEspecieStore.diet');
+
+  @override
+  String get diet {
+    _$dietAtom.reportRead();
+    return super.diet;
+  }
+
+  @override
+  set diet(String value) {
+    _$dietAtom.reportWrite(value, super.diet, () {
+      super.diet = value;
+    });
+  }
+
+  final _$dietEnAtom = Atom(name: '_NewSubEspecieStore.dietEn');
+
+  @override
+  String get dietEn {
+    _$dietEnAtom.reportRead();
+    return super.dietEn;
+  }
+
+  @override
+  set dietEn(String value) {
+    _$dietEnAtom.reportWrite(value, super.dietEn, () {
+      super.dietEn = value;
+    });
+  }
+
   final _$showErrorsAtom = Atom(name: '_NewSubEspecieStore.showErrors');
 
   @override
@@ -766,6 +826,50 @@ mixin _$NewSubEspecieStore on _NewSubEspecieStore, Store {
   }
 
   @override
+  void setVenom(String value) {
+    final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
+        name: '_NewSubEspecieStore.setVenom');
+    try {
+      return super.setVenom(value);
+    } finally {
+      _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setVenomEn(String value) {
+    final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
+        name: '_NewSubEspecieStore.setVenomEn');
+    try {
+      return super.setVenomEn(value);
+    } finally {
+      _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDiet(String value) {
+    final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
+        name: '_NewSubEspecieStore.setDiet');
+    try {
+      return super.setDiet(value);
+    } finally {
+      _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDietEn(String value) {
+    final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
+        name: '_NewSubEspecieStore.setDietEn');
+    try {
+      return super.setDietEn(value);
+    } finally {
+      _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void invalidSendPressed() {
     final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
         name: '_NewSubEspecieStore.invalidSendPressed');
@@ -805,6 +909,10 @@ activity: ${activity},
 activityEn: ${activityEn},
 whereLive: ${whereLive},
 whereLiveEn: ${whereLiveEn},
+venom: ${venom},
+venomEn: ${venomEn},
+diet: ${diet},
+dietEn: ${dietEn},
 showErrors: ${showErrors},
 error: ${error},
 loading: ${loading},

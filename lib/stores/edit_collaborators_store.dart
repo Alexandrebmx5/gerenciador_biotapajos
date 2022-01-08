@@ -8,12 +8,25 @@ class EditCollaboratorsStore = _EditCollaboratorsStore with _$EditCollaboratorsS
 abstract class _EditCollaboratorsStore with Store {
 
   _EditCollaboratorsStore(this.collaborators){
+    if(collaborators.img != null)
+      img = collaborators.img.asObservable();
     name = collaborators.name ?? '';
     descriptionPt = collaborators.descriptionPt ?? '';
     descriptionEn = collaborators.descriptionEn ?? '';
   }
 
   Collaborators collaborators;
+
+  ObservableList img = ObservableList();
+
+  @computed
+  bool get imgValid => img.isNotEmpty;
+  String get imgError {
+    if (!showErrors || imgValid)
+      return null;
+    else
+      return 'Insira imagens';
+  }
 
   @observable
   String name = '';
@@ -68,6 +81,7 @@ abstract class _EditCollaboratorsStore with Store {
 
   @computed
   bool get formValid =>
+      imgValid &&
       nameValid &&
           descriptionPtValid &&
           descriptionEnValid;
@@ -92,6 +106,7 @@ abstract class _EditCollaboratorsStore with Store {
 
   @action
   Future<void> _send() async {
+    collaborators.img = img;
     collaborators.name = name;
     collaborators.descriptionPt = descriptionPt;
     collaborators.descriptionEn = descriptionEn;

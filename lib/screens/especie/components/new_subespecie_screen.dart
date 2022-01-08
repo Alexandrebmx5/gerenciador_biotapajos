@@ -601,6 +601,86 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               ),
                             );
                           }),
+                          Observer(builder: (_) {
+                            return Container(
+                              margin:
+                              EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                              width: MediaQuery.of(context).size.width * 0.2,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]),
+                              child: TextFormField(
+                                initialValue: store.venom ?? '',
+                                onChanged: store.setVenom,
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Veneno'),
+                                //validator: validateTitle,
+                              ),
+                            );
+                          }),
+                          Observer(builder: (_) {
+                            return Container(
+                              margin:
+                              EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                              width: MediaQuery.of(context).size.width * 0.2,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]),
+                              child: TextFormField(
+                                initialValue: store.venomEn ?? '',
+                                onChanged: store.setVenomEn,
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Veneno em inglês'),
+                                //validator: validateTitle,
+                              ),
+                            );
+                          }),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Observer(builder: (_) {
+                            return Container(
+                              margin:
+                              EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                              width: MediaQuery.of(context).size.width * 0.2,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]),
+                              child: TextFormField(
+                                initialValue: store.diet ?? '',
+                                onChanged: store.setDiet,
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Dieta'),
+                                //validator: validateTitle,
+                              ),
+                            );
+                          }),
+                          Observer(builder: (_) {
+                            return Container(
+                              margin:
+                              EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                              width: MediaQuery.of(context).size.width * 0.2,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]),
+                              child: TextFormField(
+                                initialValue: store.dietEn ?? '',
+                                onChanged: store.setDietEn,
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Dieta em inglês'),
+                                //validator: validateTitle,
+                              ),
+                            );
+                          }),
                         ],
                       )
                   ]);
@@ -1068,7 +1148,84 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                             ),
                           );
                         }),
-                      ]);
+                        Observer(builder: (_) {
+                          return Container(
+                            margin:
+                            EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey[300]),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[100]),
+                            child: TextFormField(
+                              initialValue: store.venom ?? '',
+                              onChanged: store.setVenom,
+                              style: _fieldStyle,
+                              decoration: _buildDecoration('Veneno'),
+                              //validator: validateTitle,
+                            ),
+                          );
+                        }),
+                        Observer(builder: (_) {
+                          return Container(
+                            margin:
+                            EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey[300]),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[100]),
+                            child: TextFormField(
+                              initialValue: store.venomEn ?? '',
+                              onChanged: store.setVenomEn,
+                              style: _fieldStyle,
+                              decoration: _buildDecoration('Veneno em inglês'),
+                              //validator: validateTitle,
+                            ),
+                          );
+                        }),
+                        Observer(builder: (_) {
+                          return Container(
+                            margin:
+                            EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey[300]),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[100]),
+                            child: TextFormField(
+                              initialValue: store.diet ?? '',
+                              onChanged: store.setDiet,
+                              style: _fieldStyle,
+                              decoration: _buildDecoration('Dieta'),
+                              //validator: validateTitle,
+                            ),
+                          );
+                        }),
+                        Observer(builder: (_) {
+                          return Container(
+                            margin:
+                            EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey[300]),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[100]),
+                            child: TextFormField(
+                              initialValue: store.dietEn ?? '',
+                              onChanged: store.setDietEn,
+                              style: _fieldStyle,
+                              decoration: _buildDecoration('Dieta em inglês'),
+                              //validator: validateTitle,
+                            ),
+                          );
+                        }),
+                      ],
+                  );
               },
             ),
           ),

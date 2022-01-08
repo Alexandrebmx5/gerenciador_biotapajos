@@ -36,6 +36,10 @@ abstract class _NewSubEspecieStore with Store {
     activityEn = subEspecie.activityEn ?? '';
     whereLive = subEspecie.whereLive ?? '';
     whereLiveEn = subEspecie.whereLiveEn ?? '';
+    venom = subEspecie.venom ?? '';
+    venomEn = subEspecie.venomEn ?? '';
+    diet = subEspecie.diet ?? '';
+    dietEn = subEspecie.dietEn ?? '';
   }
 
   final SubEspecie subEspecie;
@@ -200,6 +204,30 @@ abstract class _NewSubEspecieStore with Store {
   @action
   void setWhereLiveEn(String value) => whereLiveEn = value;
 
+  @observable
+  String venom = '';
+
+  @action
+  void setVenom(String value) => venom = value;
+
+  @observable
+  String venomEn = '';
+
+  @action
+  void setVenomEn(String value) => venomEn = value;
+
+  @observable
+  String diet = '';
+
+  @action
+  void setDiet(String value) => diet = value;
+
+  @observable
+  String dietEn = '';
+
+  @action
+  void setDietEn(String value) => dietEn = value;
+
   @computed
   Function get sendPressed => _send;
 
@@ -248,6 +276,10 @@ abstract class _NewSubEspecieStore with Store {
     subEspecie.activityEn = activityEn;
     subEspecie.whereLive = whereLive;
     subEspecie.whereLiveEn = whereLiveEn;
+    subEspecie.venom = venom;
+    subEspecie.venomEn = venomEn;
+    subEspecie.diet = diet;
+    subEspecie.dietEn = dietEn;
 
     loading = true;
     await SubEspecie().save(subEspecie);

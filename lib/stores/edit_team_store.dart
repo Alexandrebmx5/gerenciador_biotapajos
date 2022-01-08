@@ -9,12 +9,25 @@ class EditTeamStore = _EditTeamStore with _$EditTeamStore;
 abstract class _EditTeamStore with Store {
 
   _EditTeamStore(this.team){
+    if(team.img != null)
+      img = team.img.asObservable();
     name = team.name ?? '';
     descriptionPt = team.descriptionPt ?? '';
     descriptionEn = team.descriptionEn ?? '';
   }
 
   Team team;
+
+  ObservableList img = ObservableList();
+
+  @computed
+  bool get imgValid => img.isNotEmpty;
+  String get imgError {
+    if (!showErrors || imgValid)
+      return null;
+    else
+      return 'Insira imagens';
+  }
 
   @observable
   String name;
@@ -69,6 +82,7 @@ abstract class _EditTeamStore with Store {
 
   @computed
   bool get formValid =>
+          imgValid &&
           nameValid &&
           descriptionPtValid &&
           descriptionEnValid;
@@ -93,6 +107,7 @@ abstract class _EditTeamStore with Store {
 
   @action
   Future<void> _send() async {
+    team.img = img;
     team.name = name;
     team.descriptionPt = descriptionPt;
     team.descriptionEn = descriptionEn;

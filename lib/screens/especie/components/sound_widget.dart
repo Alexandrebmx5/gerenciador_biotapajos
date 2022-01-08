@@ -19,24 +19,45 @@ class SoundWidget extends StatelessWidget {
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(top: 16, bottom: 8),
-                child: Observer(builder: (_){
-                  return ElevatedButton(
-                    child: Container(
-                        child: store.sound.isEmpty ? Text('Selecione um som', style: TextStyle(color: Colors.black),) : Text('Selecionado', style: TextStyle(color: Colors.black))
+              Row(
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(top: 16, bottom: 8),
+                    child: Observer(builder: (_){
+                      return ElevatedButton(
+                        child: Container(
+                            child: store.sound.isEmpty ? Text('Selecione um som', style: TextStyle(color: Colors.black),) : Text('Selecionado', style: TextStyle(color: Colors.black))
+                        ),
+                        onPressed: () async {
+                          FilePickerResult result = await FilePicker.platform.pickFiles();
+                          if (result != null) {
+                            Uint8List fileBytes = result.files.first.bytes;
+                            String name = result.files.first.name;
+                            store.setSoundName(name);
+                            store.setSound(fileBytes);
+                          }
+                        },
+                      );
+                    }),
+                  ),
+                  if(store.sound.isNotEmpty)...[
+                    Container(
+                      padding: EdgeInsets.only(top: 16, bottom: 8, left: 10),
+                      child: Observer(builder: (_){
+                        return ElevatedButton(
+                          child: Icon(Icons.remove_circle),
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.red
+                          ),
+                          onPressed: () {
+                            store.setSoundName(null);
+                            store.setSound('');
+                          },
+                        );
+                      }),
                     ),
-                    onPressed: () async {
-                      FilePickerResult result = await FilePicker.platform.pickFiles();
-                      if (result != null) {
-                        Uint8List fileBytes = result.files.first.bytes;
-                        String name = result.files.first.name;
-                        store.setSoundName(name);
-                        store.setSound(fileBytes);
-                      }
-                    },
-                  );
-                }),
+                  ]
+                ],
               )
             ]));
   }

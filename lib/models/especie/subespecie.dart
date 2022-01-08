@@ -35,6 +35,10 @@ class SubEspecie {
   String activity;
   String whereLive;
   String whereLiveEn;
+  String venom;
+  String venomEn;
+  String diet;
+  String dietEn;
 
   SubEspecie(
       {this.id,
@@ -94,6 +98,14 @@ class SubEspecie {
     activityEn = doc.get('activity_en');
     whereLive = doc.get('where_live');
     whereLiveEn = doc.get('where_live_en');
+    if(doc.data().containsKey('venom')){
+      venom = doc.get('venom');
+      venomEn = doc.get('venom_en');
+    }
+    if(doc.data().containsKey('diet')){
+      diet = doc.get('diet');
+      dietEn = doc.get('diet_en');
+    }
   }
 
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -130,6 +142,10 @@ class SubEspecie {
       'where_live': subEspecie.whereLive,
       'where_live_en': subEspecie.whereLiveEn,
       if(subEspecie.img.isEmpty) 'img': [],
+      'venom': subEspecie.venom,
+      'diet': subEspecie.diet,
+      'venom_en': subEspecie.venomEn,
+      'diet_en': subEspecie.dietEn,
     };
 
     if(subEspecie.id == null){
@@ -151,14 +167,12 @@ class SubEspecie {
           final String url = await snapshot.ref.getDownloadURL();
           uploadImage.add(url);
         }
-
-        print(uploadImage);
       }
 
         // sound
         String downloadUrl = '';
 
-        if(subEspecie.sound != null){
+        if(subEspecie.soundName != null){
           UploadTask uploadTask = storageRef.child('sounds/${subEspecie.soundName}').
           putData(sound);
           TaskSnapshot s = await uploadTask;
@@ -203,7 +217,7 @@ class SubEspecie {
       String soundUrl = '';
 
       // sound
-      if(subEspecie.sound != String) {
+      if(subEspecie.soundName != null) {
         UploadTask uploadTask = FirebaseStorage.instance.ref('sounds/${subEspecie.soundName}').
         putData(sound);
         TaskSnapshot s = await uploadTask;

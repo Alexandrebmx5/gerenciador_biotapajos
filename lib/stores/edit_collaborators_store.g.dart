@@ -9,6 +9,13 @@ part of 'edit_collaborators_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$EditCollaboratorsStore on _EditCollaboratorsStore, Store {
+  Computed<bool> _$imgValidComputed;
+
+  @override
+  bool get imgValid =>
+      (_$imgValidComputed ??= Computed<bool>(() => super.imgValid,
+              name: '_EditCollaboratorsStore.imgValid'))
+          .value;
   Computed<bool> _$nameValidComputed;
 
   @override
@@ -217,6 +224,7 @@ showErrors: ${showErrors},
 loading: ${loading},
 error: ${error},
 savedCollaborators: ${savedCollaborators},
+imgValid: ${imgValid},
 nameValid: ${nameValid},
 descriptionPtValid: ${descriptionPtValid},
 descriptionEnValid: ${descriptionEnValid},

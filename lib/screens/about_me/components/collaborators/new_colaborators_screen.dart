@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:gerenciador_aquifero/common/constants.dart';
 import 'package:gerenciador_aquifero/models/about_me/collaborators/collaborators.dart';
+import 'package:gerenciador_aquifero/screens/about_me/components/collaborators/image_field_collaborators.dart';
 import 'package:gerenciador_aquifero/stores/edit_collaborators_store.dart';
 import 'package:mobx/mobx.dart';
 
@@ -98,6 +99,18 @@ class _NewCollaboratorsScreenState extends State<NewCollaboratorsScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: defaultPadding),
+                    child: Row(
+                      children: [
+                        Text(
+                          'Escolher uma imagem:',
+                          style: TextStyle(color: Colors.black, fontSize: 12),
+                        ),
+                      ],
+                    ),
+                  ),
+                  ImagesFieldCollaborators(store),
                   Observer(builder: (_) {
                     return Container(
                       margin: EdgeInsets.only(left: 16, top: 16),
