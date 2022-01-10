@@ -63,6 +63,7 @@ class _SubEspecieScreenState extends State<SubEspecieScreen> {
   }
 
   Widget body({@required String id}) {
+    print(id);
     return LayoutBuilder(
       builder: (context, constraints) {
         return Container(
@@ -111,12 +112,12 @@ class _SubEspecieScreenState extends State<SubEspecieScreen> {
                                     Container(
                                       margin: EdgeInsets.all(10),
                                       width: 50,
-                                      child: CachedNetworkImage(
+                                      child: subEspecies[index].img.isNotEmpty ? CachedNetworkImage(
                                         imageUrl: subEspecies[index].img.first,
                                         progressIndicatorBuilder: (context, url, downloadProgress) =>
                                             CircularProgressIndicator(value: downloadProgress.progress),
                                         errorWidget: (context, url, error) => Icon(Icons.error),
-                                      ),
+                                      ) : Image.asset('assets/images/logo.png'),
                                     ),
                                     Expanded(
                                       child: Text(
