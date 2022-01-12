@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gerenciador_aquifero/common/constants.dart';
+import 'package:gerenciador_aquifero/screens/guia_pratico/components/list_trails.dart';
 import 'package:gerenciador_aquifero/screens/guia_pratico/components/list_ucs.dart';
-import 'package:gerenciador_aquifero/screens/guia_pratico/pdf_tile.dart';
 
 class MenusGuiaScreen extends StatefulWidget {
   @override
@@ -32,7 +32,7 @@ class _MenusGuiaScreenState extends State<MenusGuiaScreen> {
             color: Colors.white,
             child: ListTile(
               onTap: (){
-                Navigator.of(context).push(MaterialPageRoute(builder: (_)=>PdfTile()));
+                Navigator.of(context).push(MaterialPageRoute(builder: (_)=>ListTrails()));
               },
               title: Text('Trilhas ecológicas', style: TextStyle(color: bgColor)),
               trailing: Icon(Icons.arrow_forward_ios, color: bgColor),
