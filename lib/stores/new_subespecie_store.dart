@@ -40,6 +40,8 @@ abstract class _NewSubEspecieStore with Store {
     venomEn = subEspecie.venomEn ?? '';
     diet = subEspecie.diet ?? '';
     dietEn = subEspecie.dietEn ?? '';
+    creditImage = subEspecie.creditImage ?? '';
+    creditImageEn = subEspecie.creditImageEn ?? '';
   }
 
   final SubEspecie subEspecie;
@@ -107,6 +109,11 @@ abstract class _NewSubEspecieStore with Store {
   @action
   void setSpecieEn(String value) => specieEn = value;
 
+  @observable
+  String groupId = '';
+
+  @action
+  void setGroupId(String value) => groupId = value;
 
   @observable
   String group = '';
@@ -228,6 +235,18 @@ abstract class _NewSubEspecieStore with Store {
   @action
   void setDietEn(String value) => dietEn = value;
 
+  @observable
+  String creditImage = '';
+
+  @action
+  void setCreditImage(String value) => creditImage = value;
+
+  @observable
+  String creditImageEn = '';
+
+  @action
+  void setCreditImageEn(String value) => creditImageEn = value;
+
   @computed
   Function get sendPressed => _send;
 
@@ -280,6 +299,9 @@ abstract class _NewSubEspecieStore with Store {
     subEspecie.venomEn = venomEn;
     subEspecie.diet = diet;
     subEspecie.dietEn = dietEn;
+    subEspecie.groupId = groupId;
+    subEspecie.creditImage = creditImage;
+    subEspecie.creditImageEn = creditImageEn;
 
     loading = true;
     await SubEspecie().save(subEspecie);

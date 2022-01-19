@@ -1,8 +1,8 @@
 import 'dart:typed_data';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:gerenciador_aquifero/models/especie/especie.dart';
 import 'package:uuid/uuid.dart';
 
 class SubEspecie {
@@ -25,6 +25,7 @@ class SubEspecie {
   String familyEn;
   var sound;
   String soundName;
+  String groupId;
   String group;
   String groupEn;
   String specie;
@@ -39,6 +40,8 @@ class SubEspecie {
   String venomEn;
   String diet;
   String dietEn;
+  String creditImage;
+  String creditImageEn;
 
   SubEspecie(
       {this.id,
@@ -59,6 +62,7 @@ class SubEspecie {
       this.familyEn,
       this.sound,
       this.soundName,
+      this.groupId,
       this.group,
       this.groupEn,
       this.specie,
@@ -106,6 +110,10 @@ class SubEspecie {
       diet = doc.get('diet');
       dietEn = doc.get('diet_en');
     }
+    if(doc.data().containsKey('credit_image')){
+      creditImage = doc.get('credit_image');
+      creditImageEn = doc.get('credit_image_en');
+    }
   }
 
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -146,12 +154,14 @@ class SubEspecie {
       'diet': subEspecie.diet,
       'venom_en': subEspecie.venomEn,
       'diet_en': subEspecie.dietEn,
+      'credit_image': subEspecie.creditImage,
+      'credit_image_en': subEspecie.creditImageEn,
     };
 
     if(subEspecie.id == null){
 
       final doc = await firestore.collection('species')
-          .doc(subEspecie.group.toLowerCase())
+          .doc(subEspecie.groupId)
           .collection('subspecies')
           .add(data);
 
@@ -181,7 +191,7 @@ class SubEspecie {
 
         DocumentReference firestoreRef =
         firestore.collection('species')
-            .doc(subEspecie.group.toLowerCase())
+            .doc(subEspecie.groupId)
             .collection('subspecies')
             .doc(doc.id);
 
@@ -238,7 +248,7 @@ class SubEspecie {
 
       DocumentReference firestoreRef =
       firestore.collection('species')
-          .doc(subEspecie.group.toLowerCase())
+          .doc(subEspecie.groupId)
           .collection('subspecies')
           .doc(subEspecie.id);
 
@@ -249,11 +259,11 @@ class SubEspecie {
     }
   }
 
-  Future<void> delete(SubEspecie subEspecie) async {
+  Future<void> delete(SubEspecie subEspecie, Especie especie) async {
     try {
       DocumentReference ref = firestore
           .collection('species')
-          .doc(subEspecie.group.toLowerCase())
+          .doc(especie.id)
           .collection('subspecies')
           .doc(subEspecie.id);
 

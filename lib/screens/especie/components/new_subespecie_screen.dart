@@ -68,6 +68,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
 
     final _fieldStyle = TextStyle(color: Colors.black, fontSize: 16);
 
+    store.setGroupId(widget.especie.id);
     store.setGroup(widget.especie.pt);
     store.setGroupEn(widget.especie.en);
 
@@ -681,6 +682,44 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               ),
                             );
                           }),
+                          Observer(builder: (_) {
+                            return Container(
+                              margin:
+                              EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                              width: MediaQuery.of(context).size.width * 0.2,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]),
+                              child: TextFormField(
+                                initialValue: store.creditImage ?? '',
+                                onChanged: store.setCreditImage,
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Creditos da imagem'),
+                                //validator: validateTitle,
+                              ),
+                            );
+                          }),
+                          Observer(builder: (_) {
+                            return Container(
+                              margin:
+                              EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                              width: MediaQuery.of(context).size.width * 0.2,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]),
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.grey[100]),
+                              child: TextFormField(
+                                initialValue: store.creditImageEn ?? '',
+                                onChanged: store.setCreditImageEn,
+                                style: _fieldStyle,
+                                decoration: _buildDecoration('Creditos da imagem em inglês'),
+                                //validator: validateTitle,
+                              ),
+                            );
+                          }),
                         ],
                       )
                   ]);
@@ -1037,7 +1076,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                         Observer(builder: (_) {
                           return Container(
                             margin:
-                                EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                                EdgeInsets.only(left: 16, top: 16),
                             width: MediaQuery.of(context).size.width * 0.2,
                             height: 50,
                             decoration: BoxDecoration(
@@ -1056,7 +1095,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                         Observer(builder: (_) {
                           return Container(
                             margin:
-                                EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                                EdgeInsets.only(left: 16, top: 16),
                             width: MediaQuery.of(context).size.width * 0.2,
                             height: 50,
                             decoration: BoxDecoration(
@@ -1075,7 +1114,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                         Observer(builder: (_) {
                           return Container(
                             margin:
-                            EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                            EdgeInsets.only(left: 16, top: 16),
                             width: MediaQuery.of(context).size.width * 0.2,
                             height: 50,
                             decoration: BoxDecoration(
@@ -1094,7 +1133,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                         Observer(builder: (_) {
                           return Container(
                             margin:
-                            EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                            EdgeInsets.only(left: 16, top: 16),
                             width: MediaQuery.of(context).size.width * 0.2,
                             height: 50,
                             decoration: BoxDecoration(
@@ -1113,7 +1152,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                         Observer(builder: (_) {
                           return Container(
                             margin:
-                            EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                            EdgeInsets.only(left: 16, top: 16),
                             width: MediaQuery.of(context).size.width * 0.2,
                             height: 50,
                             decoration: BoxDecoration(
@@ -1132,7 +1171,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                         Observer(builder: (_) {
                           return Container(
                             margin:
-                            EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                            EdgeInsets.only(left: 16, top: 16),
                             width: MediaQuery.of(context).size.width * 0.2,
                             height: 50,
                             decoration: BoxDecoration(
@@ -1151,7 +1190,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                         Observer(builder: (_) {
                           return Container(
                             margin:
-                            EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                            EdgeInsets.only(left: 16, top: 16),
                             width: MediaQuery.of(context).size.width * 0.2,
                             height: 50,
                             decoration: BoxDecoration(
@@ -1170,7 +1209,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                         Observer(builder: (_) {
                           return Container(
                             margin:
-                            EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                            EdgeInsets.only(left: 16, top: 16),
                             width: MediaQuery.of(context).size.width * 0.2,
                             height: 50,
                             decoration: BoxDecoration(
@@ -1189,7 +1228,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                         Observer(builder: (_) {
                           return Container(
                             margin:
-                            EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                            EdgeInsets.only(left: 16, top: 16),
                             width: MediaQuery.of(context).size.width * 0.2,
                             height: 50,
                             decoration: BoxDecoration(
@@ -1208,7 +1247,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                         Observer(builder: (_) {
                           return Container(
                             margin:
-                            EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                            EdgeInsets.only(left: 16, top: 16),
                             width: MediaQuery.of(context).size.width * 0.2,
                             height: 50,
                             decoration: BoxDecoration(
@@ -1220,6 +1259,44 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               onChanged: store.setDietEn,
                               style: _fieldStyle,
                               decoration: _buildDecoration('Dieta em inglês'),
+                              //validator: validateTitle,
+                            ),
+                          );
+                        }),
+                        Observer(builder: (_) {
+                          return Container(
+                            margin:
+                            EdgeInsets.only(left: 16, top: 16),
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey[300]),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[100]),
+                            child: TextFormField(
+                              initialValue: store.creditImage ?? '',
+                              onChanged: store.setCreditImage,
+                              style: _fieldStyle,
+                              decoration: _buildDecoration('Creditos da imagem'),
+                              //validator: validateTitle,
+                            ),
+                          );
+                        }),
+                        Observer(builder: (_) {
+                          return Container(
+                            margin:
+                            EdgeInsets.only(left: 16, top: 16, bottom: 16),
+                            width: MediaQuery.of(context).size.width * 0.2,
+                            height: 50,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey[300]),
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[100]),
+                            child: TextFormField(
+                              initialValue: store.creditImageEn ?? '',
+                              onChanged: store.setCreditImageEn,
+                              style: _fieldStyle,
+                              decoration: _buildDecoration('Creditos da imagem em inglês'),
                               //validator: validateTitle,
                             ),
                           );

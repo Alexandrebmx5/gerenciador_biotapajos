@@ -184,7 +184,7 @@ class _SubEspecieScreenState extends State<SubEspecieScreen> {
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
-              SubEspecie().delete(subEspecie);
+              SubEspecie().delete(subEspecie, widget.especie);
             },
             child: Text('Sim', style: TextStyle(color: Colors.red),),
           ),
