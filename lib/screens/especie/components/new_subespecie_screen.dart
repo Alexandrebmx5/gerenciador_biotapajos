@@ -456,7 +456,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               initialValue: store.color ?? '',
                               onChanged: store.setColor,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Cor predominante'),
+                              decoration: _buildDecoration('Descrição'),
                               //validator: validateTitle,
                             ),
                           );
@@ -475,7 +475,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               onChanged: store.setColorEn,
                               style: _fieldStyle,
                               decoration: _buildDecoration(
-                                  'Cor predominante em inglês'),
+                                  'Descrição em inglês'),
                               //validator: validateTitle,
                             ),
                           );
@@ -498,7 +498,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               initialValue: store.specieSimilar ?? '',
                               onChanged: store.setSpecieSimilar,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Espécie similar'),
+                              decoration: _buildDecoration('Espécies similares'),
                               //validator: validateTitle,
                             ),
                           );
@@ -517,7 +517,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               initialValue: store.specieSimilarEn ?? '',
                               onChanged: store.setSpecieSimilarEn,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Espécie similar em inglês'),
+                              decoration: _buildDecoration('Espécies similares em inglês'),
                               //validator: validateTitle,
                             ),
                           );
@@ -696,7 +696,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 initialValue: store.creditImage ?? '',
                                 onChanged: store.setCreditImage,
                                 style: _fieldStyle,
-                                decoration: _buildDecoration('Creditos da imagem'),
+                                decoration: _buildDecoration('Créditos das fotos'),
                                 //validator: validateTitle,
                               ),
                             );
@@ -715,7 +715,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                                 initialValue: store.creditImageEn ?? '',
                                 onChanged: store.setCreditImageEn,
                                 style: _fieldStyle,
-                                decoration: _buildDecoration('Creditos da imagem em inglês'),
+                                decoration: _buildDecoration('Créditos das fotos em inglês'),
                                 //validator: validateTitle,
                               ),
                             );
@@ -1049,7 +1049,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               initialValue: store.color ?? '',
                               onChanged: store.setColor,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Cor predominante'),
+                              decoration: _buildDecoration('Descrição'),
                               //validator: validateTitle,
                             ),
                           );
@@ -1068,7 +1068,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               onChanged: store.setColorEn,
                               style: _fieldStyle,
                               decoration: _buildDecoration(
-                                  'Cor predominante em inglês'),
+                                  'Descrição em inglês'),
                               //validator: validateTitle,
                             ),
                           );
@@ -1087,7 +1087,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               initialValue: store.specieSimilar ?? '',
                               onChanged: store.setSpecieSimilar,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Espécie similar'),
+                              decoration: _buildDecoration('Espécies similares'),
                               //validator: validateTitle,
                             ),
                           );
@@ -1106,7 +1106,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               initialValue: store.specieSimilarEn ?? '',
                               onChanged: store.setSpecieSimilarEn,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Espécie similar em inglês'),
+                              decoration: _buildDecoration('Espécies similares em inglês'),
                               //validator: validateTitle,
                             ),
                           );
@@ -1277,7 +1277,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               initialValue: store.creditImage ?? '',
                               onChanged: store.setCreditImage,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Creditos da imagem'),
+                              decoration: _buildDecoration('Créditos das fotos'),
                               //validator: validateTitle,
                             ),
                           );
@@ -1296,7 +1296,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                               initialValue: store.creditImageEn ?? '',
                               onChanged: store.setCreditImageEn,
                               style: _fieldStyle,
-                              decoration: _buildDecoration('Creditos da imagem em inglês'),
+                              decoration: _buildDecoration('Créditos das fotos em inglês'),
                               //validator: validateTitle,
                             ),
                           );
