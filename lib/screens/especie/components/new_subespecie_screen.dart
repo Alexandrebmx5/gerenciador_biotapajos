@@ -6,7 +6,6 @@ import 'package:gerenciador_aquifero/common/responsive.dart';
 import 'package:gerenciador_aquifero/models/especie/especie.dart';
 import 'package:gerenciador_aquifero/models/especie/subespecie.dart';
 import 'package:gerenciador_aquifero/screens/especie/components/image_field_subespecie.dart';
-import 'package:gerenciador_aquifero/screens/especie/components/sound_widget.dart';
 import 'package:gerenciador_aquifero/stores/new_subespecie_store.dart';
 import 'package:mobx/mobx.dart';
 
@@ -76,7 +75,6 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
         backgroundColor: secondaryColor,
         appBar: AppBar(
           backgroundColor: primaryColor,
-          automaticallyImplyLeading: false,
           title: Text(editing ? 'Editar Espécie' : 'Criar Espécie',
               style: TextStyle(color: secondaryColor)),
           actions: [
@@ -127,7 +125,7 @@ class _NewSubspecieScreenState extends State<NewSubspecieScreen> {
                       ),
                     ),
                     ImagesFieldSubEspecie(store),
-                    SoundWidget(store),
+                    //SoundWidget(store),
                     Row(
                       children: [
                         Observer(builder: (_) {
