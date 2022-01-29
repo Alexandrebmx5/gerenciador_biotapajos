@@ -168,6 +168,21 @@ mixin _$NewSubEspecieStore on _NewSubEspecieStore, Store {
     });
   }
 
+  final _$groupIdAtom = Atom(name: '_NewSubEspecieStore.groupId');
+
+  @override
+  String get groupId {
+    _$groupIdAtom.reportRead();
+    return super.groupId;
+  }
+
+  @override
+  set groupId(String value) {
+    _$groupIdAtom.reportWrite(value, super.groupId, () {
+      super.groupId = value;
+    });
+  }
+
   final _$groupAtom = Atom(name: '_NewSubEspecieStore.group');
 
   @override
@@ -469,6 +484,36 @@ mixin _$NewSubEspecieStore on _NewSubEspecieStore, Store {
     });
   }
 
+  final _$creditImageAtom = Atom(name: '_NewSubEspecieStore.creditImage');
+
+  @override
+  String get creditImage {
+    _$creditImageAtom.reportRead();
+    return super.creditImage;
+  }
+
+  @override
+  set creditImage(String value) {
+    _$creditImageAtom.reportWrite(value, super.creditImage, () {
+      super.creditImage = value;
+    });
+  }
+
+  final _$creditImageEnAtom = Atom(name: '_NewSubEspecieStore.creditImageEn');
+
+  @override
+  String get creditImageEn {
+    _$creditImageEnAtom.reportRead();
+    return super.creditImageEn;
+  }
+
+  @override
+  set creditImageEn(String value) {
+    _$creditImageEnAtom.reportWrite(value, super.creditImageEn, () {
+      super.creditImageEn = value;
+    });
+  }
+
   final _$showErrorsAtom = Atom(name: '_NewSubEspecieStore.showErrors');
 
   @override
@@ -644,6 +689,17 @@ mixin _$NewSubEspecieStore on _NewSubEspecieStore, Store {
         name: '_NewSubEspecieStore.setSpecieEn');
     try {
       return super.setSpecieEn(value);
+    } finally {
+      _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setGroupId(String value) {
+    final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
+        name: '_NewSubEspecieStore.setGroupId');
+    try {
+      return super.setGroupId(value);
     } finally {
       _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
     }
@@ -870,6 +926,28 @@ mixin _$NewSubEspecieStore on _NewSubEspecieStore, Store {
   }
 
   @override
+  void setCreditImage(String value) {
+    final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
+        name: '_NewSubEspecieStore.setCreditImage');
+    try {
+      return super.setCreditImage(value);
+    } finally {
+      _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setCreditImageEn(String value) {
+    final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
+        name: '_NewSubEspecieStore.setCreditImageEn');
+    try {
+      return super.setCreditImageEn(value);
+    } finally {
+      _$_NewSubEspecieStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void invalidSendPressed() {
     final _$actionInfo = _$_NewSubEspecieStoreActionController.startAction(
         name: '_NewSubEspecieStore.invalidSendPressed');
@@ -893,6 +971,7 @@ youKnow: ${youKnow},
 youKnowEn: ${youKnowEn},
 specie: ${specie},
 specieEn: ${specieEn},
+groupId: ${groupId},
 group: ${group},
 groupEn: ${groupEn},
 family: ${family},
@@ -913,6 +992,8 @@ venom: ${venom},
 venomEn: ${venomEn},
 diet: ${diet},
 dietEn: ${dietEn},
+creditImage: ${creditImage},
+creditImageEn: ${creditImageEn},
 showErrors: ${showErrors},
 error: ${error},
 loading: ${loading},

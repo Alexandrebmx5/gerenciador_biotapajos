@@ -183,7 +183,7 @@ class SubEspecie {
         String downloadUrl = '';
 
         if(subEspecie.soundName != null){
-          UploadTask uploadTask = storageRef.child('sounds/${subEspecie.soundName}').
+          UploadTask uploadTask = storageRef.child("sounds").child('${subEspecie.soundName}').
           putData(sound);
           TaskSnapshot s = await uploadTask;
           downloadUrl = await s.ref.getDownloadURL();
@@ -235,15 +235,6 @@ class SubEspecie {
         soundUrl = downloadUrl;
       } else if(subEspecie.sound.contains(subEspecie.sound)) {
         soundUrl = subEspecie.sound.toString();
-      }
-
-      if (!subEspecie.sound.contains(subEspecie.sound)) {
-        try {
-          final ref = storage.refFromURL(subEspecie.sound);
-          await ref.delete();
-        } catch (e) {
-          debugPrint('Falha ao deletar ${subEspecie.sound}');
-        }
       }
 
       DocumentReference firestoreRef =
